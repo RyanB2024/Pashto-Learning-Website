@@ -1,74 +1,67 @@
 /* Base Styling */
 body {
-  font-family: Arial, sans-serif;
-  background: #81c4bb;
-  color: #333;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background: #81c4bb;
+    color: #333;
+    margin: 2.5%;
 }
 
 /* Layout Containers */
-.container {
-background-color: #6F9F94;
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-border-radius: 30px;
-margin-top: 1em;
-}
-
 .toggle-container {
-  margin: 1rem 0;
+    margin: 1rem 0;
 }
 
 /* Cards */
 .card {
-  background: #fff;
-  border: 2px solid #2a6c5d;
-  border-radius: 10px;
-  padding: 2rem;
-  text-align: center;
-  cursor: pointer;
-  margin: 1rem 0;
-  transition: background 0.3s;
-  font-size: 1.5rem;
+    background: #fff;
+    border: 2px solid #2a6c5d;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin: 1rem 0;
+    transition: background 0.3s;
+    font-size: 1.5rem;
 }
 
 .grid-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .grid-item {
-      background: #fff;
-      border: 2px solid #2a6c5d;
-      border-radius: 10px;
-      padding: 2rem;
-      text-align: center;
-      font-size: 1.5rem;
-      transition: background 0.3s;
-    }
-    .grid-item:hover {
-      background: #e6f2f0;
-    }
-    .grid-item a {
-      text-decoration: none;
-      color: #2a6c5d;
-      font-weight: bold;
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.grid-item {
+    background: #fff;
+    border: 2px solid #2a6c5d;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+}
+
+.grid-item:hover {
+    background: #e6f2f0;
+}
+
+.grid-item a {
+    text-decoration: none;
+    color: #2a6c5d;
+    font-weight: bold;
+}
 
 /* Buttons */
 button {
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #2a6c5d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #2a6c5d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover {
-  background: #1f5246;
+    background: #1f5246;
 }
