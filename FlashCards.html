@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Select Flashcard Pack</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Flashcard Pack</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -14,7 +14,7 @@
       <div class="logo"><img src="Photos/Pashto.svg" alt="Brand logo"></div>
       <ul class="nav-items">
         <li><a href="Home.html" class="nav-link">Home</a></li>
-        <li><a href="FlashCards.html" class="nav-link">Flash Cards</a></li>
+        <li><a href="FlashcardSelector.html" class="nav-link">Flash Cards</a></li>
         <li><a href="MiniQuiz.html" class="nav-link">Mini Quiz</a></li>
       </ul>
     </nav>
@@ -23,15 +23,15 @@
   <main class="container">
     <h1>Select a Flashcard Pack</h1>
     <p>Choose a topic to begin practicing:</p>
-    <ul>
-      <li><a href="CommonPhrases.html" class="nav-link">Greetings</a></li>
-      <li><a href="FlashCards_Food.html" class="nav-link">Food & Drink</a></li>
-      <li><a href="FlashCards_Numbers.html" class="nav-link">Numbers</a></li>
-      <li><a href="FlashCards_Days.html" class="nav-link">Days of the Week</a></li>
-      <li><a href="FlashCards_CommonPhrases.html" class="nav-link">Common Phrases</a></li>
-      <li><a href="FlashCards_Travel.html" class="nav-link">Travel</a></li>
-      <li><a href="FlashCards_All.html" class="nav-link"><strong>All Flashcards</strong></a></li>
-    </ul>
+    <div class="grid-container">
+      <div class="grid-item"><a href="CardPacks/Common_Phrases.html">Common Phrases</a></div>
+      <div class="grid-item"><a href="CardPacks/Colors.html">Colors</a></div>
+      <div class="grid-item"><a href="CardPacks/Numbers.html">Numbers</a></div>
+      <div class="grid-item"><a href="CardPacks/days.html">Days of the Week</a></div>
+      <div class="grid-item"><a href="CardPacks/Clothing.html">Clothing</a></div>
+      <div class="grid-item"><a href="CardPacks/Travel.html">Travel</a></div>
+      <div class="grid-item" style="grid-column: span 2;"><a href="CardPacks/All.html"><strong>All Flashcards</strong></a></div>
+    </div>
   </main>
 </body>
 

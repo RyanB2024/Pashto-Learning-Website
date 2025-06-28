@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Pashto</title>
+    <link rel="stylesheet" href="card.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="toggle-container">
+        <label for="script-select">Choose Script:</label>
+        <select id="script-select" onchange="updateFlashcardCommonPhrases()">
+            <option value="pashto">Pashto Script</option>
+            <option value="latin">Latin Script</option>
+            <option value="phonetic">Phonetic</option>
+        </select>
+    </div>
+
+    <section id="flashcard">
+        <h2>Flashcards</h2>
+        <p id="card-counter">Card 1 of 4</p>
+        <div class="card" onclick="flipCard()">
+            <p id="card-text">سلام</p>
+        </div>
+        <button onclick="nextCard()">Next</button>
+    </section>
+</body>
+
+</html>

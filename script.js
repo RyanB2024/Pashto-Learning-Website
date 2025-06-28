@@ -1,4 +1,4 @@
-const flashcards = [
+const flashcardsCommonPhrases = [
   { english: "Hello", pashto: "سلام", latin: "salaam", phonetic: "suh-laam" },
   { english: "Thank you", pashto: "مننه", latin: "manana", phonetic: "mah-na-na" },
   { english: "No", pashto: "نه", latin: "na", phonetic: "nah" },
