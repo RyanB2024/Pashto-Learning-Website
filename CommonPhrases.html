@@ -21,13 +21,22 @@
         </nav>
     </header>
 
-    <section id="quiz">
-        <h2>Mini Quiz</h2>
-        <p>What is the Pashto word for "Thank you"?</p>
-        <button onclick="checkAnswer(this)">ho</button>
-        <button onclick="checkAnswer(this)">manana</button>
-        <button onclick="checkAnswer(this)">na</button>
-        <p id="quiz-feedback"></p>
+    <div class="toggle-container">
+        <label for="script-select">Choose Script:</label>
+        <select id="script-select" onchange="updateFlashcard()">
+            <option value="pashto">Pashto Script</option>
+            <option value="latin">Latin Script</option>
+            <option value="phonetic">Phonetic</option>
+        </select>
+    </div>
+
+    <section id="flashcard">
+        <h2>Flashcards</h2>
+        <p id="card-counter">Card 1 of 4</p>
+        <div class="card" onclick="flipCard()">
+            <p id="card-text">سلام</p>
+        </div>
+        <button onclick="nextCard()">Next</button>
     </section>
 </body>
 

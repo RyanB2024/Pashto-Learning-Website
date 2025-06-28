@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn Pashto</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -18,29 +18,34 @@
                 <li><a href="FlashCards.html" class="nav-link">Flash Cards</a></li>
                 <li><a href="MiniQuiz.html" class="nav-link">Mini Quiz</a></li>
             </ul>
-            </div>
         </nav>
     </header>
-    <!--Intro Paragraph-->
+
     <div class="container">
         <h1>Learn Pashto</h1>
         <h2>Welcome to your Pashto learning journey!</h2>
-        <p>Pashto (PASH-toh) is an
-            eastern Iranian language in the Indo-European language family, natively spoken in northwestern Pakistan and
-            southern and eastern Afghanistan. It has official status in Afghanistan and the Pakistani province of Khyber
-            Pakhtunkhwa. It is known in historical Persian literature as Afghani (افغانی, Afghāni).</p>
-        <img src="Photos/PashtoMap.png" alt="">
+        <p>Pashto (PASH-toh) is an eastern Iranian language in the Indo-European language family, natively spoken in
+            northwestern Pakistan and southern and eastern Afghanistan. It has official status in Afghanistan and the
+            Pakistani province of Khyber Pakhtunkhwa. It is known in historical Persian literature as Afghani (افغانی,
+            Afghāni).</p>
+        <img src="Photos/PashtoMap.png" alt="Map of Pashto-speaking regions">
+    </div>
 
-        <!--Language Toggle-->
-        <p>Select How You Would Like to Learn:</p>
-        <div class="toggle-container">
-            <label for="script-select">Choose Script:</label>
-            <select id="script-select" onchange="updateFlashcard()">
-                <option value="pashto">Pashto Script</option>
-                <option value="latin">Latin Script</option>
-                <option value="phonetic">Phonetic</option>
-            </select>
+    <div class="container">
+         <h2>Understanding the Scripts to Learn!</h2>
+         <p>To help learn Pashto more effectively, you can view words in three different script formats:</p>
+          <ul>
+              <li><strong>Pashto Script:</strong> The native script used in Afghanistan and Pakistan. Example:
+                  <em>سلام</em> (Hello)
+              </li>
+              <li><strong>Latin Script:</strong> A representation using the English alphabet for easier reading.
+                  Example: <em>salaam</em></li>
+              <li><strong>Phonetic:</strong> An approximation of pronunciation using familiar English sounds. Example:
+                  <em>suh-laam</em>
+               </li>
+           </ul>
         </div>
+    </div>
 </body>
 
 </html>
