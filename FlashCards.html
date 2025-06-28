@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Pashto</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="Photos/Pashto.svg" alt="Brand logo"></div>
+            <ul class="nav-items">
+                <li><a href="Home.html" class="nav-link">Home</a></li>
+                <li><a href="FlashCards.html" class="nav-link">Flash Cards</a></li>
+                <li><a href="MiniQuiz.html" class="nav-link">Mini Quiz</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <label for="script-select">Choose Script:</label>
+        <select id="script-select" onchange="updateFlashcard()">
+            <option value="pashto">Pashto Script</option>
+            <option value="latin">Latin Script</option>
+            <option value="phonetic">Phonetic</option>
+        </select>
+    </div>
+    <!--Flash Cards Section-->
+    <section id="flashcard">
+        <h2>Flashcards</h2>
+        <p id="card-counter">Card 1 of 4</p>
+        <div class="card" onclick="flipCard()">
+            <p id="card-text">سلام</p>
+        </div>
+        <p id="card-translation">(Hello)</p>
+        <button onclick="nextCard()">Next</button>
+    </section>
+</body>
+
+</html>
