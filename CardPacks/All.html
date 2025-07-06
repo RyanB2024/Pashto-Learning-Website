@@ -4,34 +4,33 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pashto Flashcards</title>
+    <title>All Cards</title>
     <link rel="stylesheet" href="card.css" />
-    <script src="card.js" defer></script>
+    <script src="flashcards.js" defer></script>
+
 </head>
 
 <body>
-    <a href="#" class="back-button">
-        <img src="Images/back-arrow.png">
-    </a>
+    <header>
+        <h1>All Flashcards (Shuffled)</h1>
+    </header>
 
-    <div class="toggle-container">
-        <label for="script-select">Choose Script:</label>
-        <select id="script-select" onchange="updateFlashcard()">
-            <option value="pashto">Pashto Script</option>
-            <option value="latin">Latin Script</option>
-            <option value="phonetic">Phonetic</option>
-        </select>
-    </div>
+    <main>
+        <div class="card-container">
+            <div class="flashcard" id="flashcard">
+                <div class="front" id="card-front">Loading...</div>
+                <div class="back" id="card-back"></div>
+            </div>
 
-    <section id="flashcard">
-        <h2>Flashcards</h2>
-        <p id="card-counter">Card 1 of 4</p>
-        <div class="card" onclick="flipCard()">
-            <p id="card-text">Hello</p> <!-- Will be updated via JS -->
+            <div class="buttons">
+                <button onclick="prevCard()">Previous</button>
+                <button onclick="flipCard()">Flip</button>
+                <button onclick="nextCard()">Next</button>
+            </div>
         </div>
-        <button onclick="nextCard()">Next</button>
-    </section>
+    </main>
 
+    <script src="all-cards.js"></script>
 </body>
 
 </html>
