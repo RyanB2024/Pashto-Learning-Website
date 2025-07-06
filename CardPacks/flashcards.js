@@ -1,10 +1,10 @@
 // Back Button
-    const backButton = document.querySelector('.back-button');
-    if (backButton) {
-        backButton.addEventListener('click', () => {
-            window.history.back();
-        });
-    }
+const backButton = document.querySelector('.back-button');
+if (backButton) {
+    backButton.addEventListener('click', () => {
+        window.history.back();
+    });
+}
 
 // Data for all cardpacks
 const allFlashcards = {
@@ -87,13 +87,19 @@ const cardText = document.getElementById("card-text");
 const cardCounter = document.getElementById("card-counter");
 const scriptSelect = document.getElementById("script-select");
 
-// Initialize the flashcard pack
+function getAllFlashcardsCombined() {
+    return Object.values(allFlashcards).flat();
+}
+
 function initFlashcards(packName) {
-    if (!(packName in allFlashcards)) {
+    if (packName === "allFlashcards") {
+        currentPack = getAllFlashcardsCombined();
+    } else if (packName in allFlashcards) {
+        currentPack = allFlashcards[packName];
+    } else {
         console.error("Unknown flashcard pack:", packName);
         return;
     }
-    currentPack = allFlashcards[packName];
     currentCardIndex = 0;
     showingWord = true;
     updateFlashcard();
@@ -133,17 +139,46 @@ function nextCard() {
     updateFlashcard();
 }
 
-// Wait for DOM content loaded
+// Fisher–Yates shuffle
+function shufflePack(pack) {
+    for (let i = pack.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pack[i], pack[j]] = [pack[j], pack[i]];
+    }
+}
+
+// Shuffle current pack and reset to first card
+function shuffleCurrentPack() {
+    if (!currentPack || currentPack.length === 0) return;
+    shufflePack(currentPack);
+    currentCardIndex = 0;
+    updateFlashcard();
+}
+
+// Attach event listeners once DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    // Find pack from data attribute on body (set by HTML)
     const packName = document.body.getAttribute("data-pack");
     if (packName) {
         initFlashcards(packName);
     }
-    // Attach onchange to select dropdown
+
     if (scriptSelect) {
-        scriptSelect.addEventListener("change", () => {
-            updateFlashcard();
-        });
+        scriptSelect.addEventListener("change", updateFlashcard);
+    }
+
+    // Attach buttons
+    const flipButton = document.querySelector(".flip-button");
+    if (flipButton) {
+        flipButton.addEventListener("click", flipCard);
+    }
+
+    const nextButton = document.querySelector(".next-button");
+    if (nextButton) {
+        nextButton.addEventListener("click", nextCard);
+    }
+
+    const shuffleButton = document.querySelector(".shuffle-button");
+    if (shuffleButton) {
+        shuffleButton.addEventListener("click", shuffleCurrentPack);
     }
 });
