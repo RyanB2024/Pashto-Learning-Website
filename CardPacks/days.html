@@ -10,10 +10,13 @@
 </head>
 
 <body>
+    <a href="#" class="back-button">
+        <img src="Images/back-arrow.png">
+    </a>
+
     <div class="toggle-container">
         <label for="script-select">Choose Script:</label>
-        <select id="script-select" onchange="updateFlashcardCommonPhrases()">
-            <option value="pashto">Pashto Script</option>
+        <select id="script-select" onchange="updateFlashcard()">            <option value="pashto">Pashto Script</option>
             <option value="latin">Latin Script</option>
             <option value="phonetic">Phonetic</option>
         </select>
