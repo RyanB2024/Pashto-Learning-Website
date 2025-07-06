@@ -182,3 +182,40 @@ document.addEventListener("DOMContentLoaded", () => {
         shuffleButton.addEventListener("click", shuffleCurrentPack);
     }
 });
+
+function previousCard() {
+    if (!currentPack || currentPack.length === 0) return;
+    currentCardIndex = (currentCardIndex - 1 + currentPack.length) % currentPack.length;
+    updateFlashcard();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const packName = document.body.getAttribute("data-pack");
+    if (packName) {
+        initFlashcards(packName);
+    }
+
+    if (scriptSelect) {
+        scriptSelect.addEventListener("change", updateFlashcard);
+    }
+
+    const flipButton = document.querySelector(".flip-button");
+    if (flipButton) {
+        flipButton.addEventListener("click", flipCard);
+    }
+
+    const nextButton = document.querySelector(".next-button");
+    if (nextButton) {
+        nextButton.addEventListener("click", nextCard);
+    }
+
+    const prevButton = document.querySelector(".prev-button");
+    if (prevButton) {
+        prevButton.addEventListener("click", previousCard);
+    }
+
+    const shuffleButton = document.querySelector(".shuffle-button");
+    if (shuffleButton) {
+        shuffleButton.addEventListener("click", shuffleCurrentPack);
+    }
+});
