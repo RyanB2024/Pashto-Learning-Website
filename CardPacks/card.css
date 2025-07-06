@@ -65,3 +65,25 @@ button {
 button:hover {
     background: #1f5246;
 }
+
+/* Back Button */
+.back-button {
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;               /* Width and height make it a circle */
+    height: 50px;
+    display: flex;             /* Center image inside */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+/* Arrow Image inside button */
+.back-button img {
+    margin-right: 8px;
+    width: 20px; /* Adjust based on look */
+    height: auto;
+}
