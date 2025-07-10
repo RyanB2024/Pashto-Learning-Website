@@ -50,8 +50,12 @@ margin-top: 1em;
 }
 
 /* Text Elements */
-h1, h2 {
+h1{
   color: #000000;
+}
+
+h2{
+  color: #323232;
 }
 
 ul {
@@ -62,7 +66,7 @@ ul {
 /* Cards */
 .card {
   background: #fff;
-  border: 2px solid #2a6c5d;
+  border: 5px solid #2a6c5d;
   border-radius: 10px;
   padding: 2rem;
   text-align: center;
@@ -132,7 +136,7 @@ button:hover {
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   p {
@@ -158,7 +162,7 @@ button:hover {
   }
 
   h2 {
-    font-size: 2.75em;
+    font-size: 2.25em;
   }
 
   p {
@@ -194,7 +198,7 @@ button:hover {
   }
 
   h2 {
-    font-size: 3.25em;
+    font-size: 2.75em;
   }
 
   p {
