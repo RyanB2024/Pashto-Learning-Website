@@ -11,34 +11,36 @@
 </head>
 
 <body>
+
     <body data-pack="allFlashcards">
-    <a href="#" class="back-button">
-        <img src="Images/back-arrow.png" alt="Back" />
-    </a>
+        <a href="#" class="back-button">
+            <img src="Images/back-arrow.png" alt="Back" />
+        </a>
 
-    <div class="toggle-container">
-        <label for="script-select">Choose Script:</label>
-        <select id="script-select">
-            <option value="pashto">Pashto Script</option>
-            <option value="latin">Latin Script</option>
-            <option value="phonetic">Phonetic</option>
-        </select>
-    </div>
+        <div class="toggle-container">
+            <label for="script-select">Choose Script:</label>
+            <select id="script-select">
+                <option value="pashto">Pashto Script</option>
+                <option value="latin">Latin Script</option>
+                <option value="phonetic">Phonetic</option>
+            </select>
+        </div>
 
-    <section id="flashcard">
-        <h2>All Flashcards</h2>
-        <p id="card-counter">Card 1 of N</p>
-        <div class="card" onclick="flipCard()">
-            <p id="card-text">Loading...</p>
-        </div>
-        <div class="controls">
-            <button class="flip-button">Flip</button>
-            <button class="next-button">Next</button>
-            <button class="prev-button">Previous</button>
-            <button class="shuffle-button">Shuffle</button>
-        </div>
-    </section>
-</body>
+        <section id="flashcard">
+            <h2>All Flashcards</h2>
+            <p id="card-counter">Card 1 of N</p>
+            <div class="card" onclick="flipCard()">
+                <p id="card-text">Loading...</p>
+            </div>
+            <div class="controls">
+                <button class="flip-button">Flip</button>
+                <button class="next-button">Next</button>
+                <button class="prev-button">Previous</button>
+                <button class="shuffle-button">Shuffle</button>
+                <button class="speak-button">🔊</button>
+            </div>
+        </section>
+    </body>
 </body>
 
 </html>

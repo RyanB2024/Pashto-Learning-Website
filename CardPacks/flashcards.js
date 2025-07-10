@@ -78,7 +78,7 @@ const allFlashcards = {
     ]
 };
 
-// Variables to track current pack and card
+// Variables
 let currentPack = null;
 let currentCardIndex = 0;
 let showingWord = true;
@@ -92,96 +92,42 @@ function getAllFlashcardsCombined() {
 }
 
 function initFlashcards(packName) {
-    if (packName === "allFlashcards") {
-        currentPack = getAllFlashcardsCombined();
-    } else if (packName in allFlashcards) {
-        currentPack = allFlashcards[packName];
-    } else {
+    currentPack = packName === "allFlashcards"
+        ? getAllFlashcardsCombined()
+        : allFlashcards[packName];
+
+    if (!currentPack) {
         console.error("Unknown flashcard pack:", packName);
         return;
     }
+
     currentCardIndex = 0;
     showingWord = true;
     updateFlashcard();
 }
 
-// Update flashcard text based on selected script and current card
 function updateFlashcard() {
     if (!currentPack || currentPack.length === 0) return;
     showingWord = true;
-    const script = scriptSelect.value;
     const card = currentPack[currentCardIndex];
-    if (script === "pashto") {
-        cardText.textContent = card.pashto;
-    } else if (script === "latin") {
-        cardText.textContent = card.latin;
-    } else if (script === "phonetic") {
-        cardText.textContent = card.phonetic;
-    }
+    const script = scriptSelect.value;
+    cardText.textContent = card[script] || card.english;
     cardCounter.textContent = `Card ${currentCardIndex + 1} of ${currentPack.length}`;
 }
 
-// Flip card between English and selected script
 function flipCard() {
     if (!currentPack || currentPack.length === 0) return;
-    if (showingWord) {
-        cardText.textContent = currentPack[currentCardIndex].english;
-        showingWord = false;
-    } else {
-        updateFlashcard();
-    }
+    showingWord = !showingWord;
+    cardText.textContent = showingWord
+        ? currentPack[currentCardIndex][scriptSelect.value] || currentPack[currentCardIndex].english
+        : currentPack[currentCardIndex].english;
 }
 
-// Show next card in the current pack
 function nextCard() {
     if (!currentPack || currentPack.length === 0) return;
     currentCardIndex = (currentCardIndex + 1) % currentPack.length;
     updateFlashcard();
 }
-
-// Fisher–Yates shuffle
-function shufflePack(pack) {
-    for (let i = pack.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pack[i], pack[j]] = [pack[j], pack[i]];
-    }
-}
-
-// Shuffle current pack and reset to first card
-function shuffleCurrentPack() {
-    if (!currentPack || currentPack.length === 0) return;
-    shufflePack(currentPack);
-    currentCardIndex = 0;
-    updateFlashcard();
-}
-
-// Attach event listeners once DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const packName = document.body.getAttribute("data-pack");
-    if (packName) {
-        initFlashcards(packName);
-    }
-
-    if (scriptSelect) {
-        scriptSelect.addEventListener("change", updateFlashcard);
-    }
-
-    // Attach buttons
-    const flipButton = document.querySelector(".flip-button");
-    if (flipButton) {
-        flipButton.addEventListener("click", flipCard);
-    }
-
-    const nextButton = document.querySelector(".next-button");
-    if (nextButton) {
-        nextButton.addEventListener("click", nextCard);
-    }
-
-    const shuffleButton = document.querySelector(".shuffle-button");
-    if (shuffleButton) {
-        shuffleButton.addEventListener("click", shuffleCurrentPack);
-    }
-});
 
 function previousCard() {
     if (!currentPack || currentPack.length === 0) return;
@@ -189,6 +135,32 @@ function previousCard() {
     updateFlashcard();
 }
 
+function shufflePack(pack) {
+    for (let i = pack.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pack[i], pack[j]] = [pack[j], pack[i]];
+    }
+}
+
+function shuffleCurrentPack() {
+    if (!currentPack || currentPack.length === 0) return;
+    shufflePack(currentPack);
+    currentCardIndex = 0;
+    updateFlashcard();
+}
+
+function speakCurrentCard() {
+    if (!currentPack || currentPack.length === 0) return;
+    const card = currentPack[currentCardIndex];
+    const script = scriptSelect.value;
+    const textToSpeak = showingWord
+        ? card[script] || card.english
+        : card.english;
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    speechSynthesis.speak(utterance);
+}
+
+// DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
     const packName = document.body.getAttribute("data-pack");
     if (packName) {
@@ -199,23 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
         scriptSelect.addEventListener("change", updateFlashcard);
     }
 
-    const flipButton = document.querySelector(".flip-button");
-    if (flipButton) {
-        flipButton.addEventListener("click", flipCard);
-    }
-
-    const nextButton = document.querySelector(".next-button");
-    if (nextButton) {
-        nextButton.addEventListener("click", nextCard);
-    }
-
-    const prevButton = document.querySelector(".prev-button");
-    if (prevButton) {
-        prevButton.addEventListener("click", previousCard);
-    }
-
-    const shuffleButton = document.querySelector(".shuffle-button");
-    if (shuffleButton) {
-        shuffleButton.addEventListener("click", shuffleCurrentPack);
-    }
+    document.querySelector(".flip-button")?.addEventListener("click", flipCard);
+    document.querySelector(".next-button")?.addEventListener("click", nextCard);
+    document.querySelector(".prev-button")?.addEventListener("click", previousCard);
+    document.querySelector(".shuffle-button")?.addEventListener("click", shuffleCurrentPack);
+    document.querySelector(".speak-button")?.addEventListener("click", speakCurrentCard);
 });
