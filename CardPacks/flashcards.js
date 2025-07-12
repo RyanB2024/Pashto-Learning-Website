@@ -78,7 +78,7 @@ const allFlashcards = {
     ]
 };
 
-// Variables
+// Variables to track current pack and card
 let currentPack = null;
 let currentCardIndex = 0;
 let showingWord = true;
@@ -94,27 +94,37 @@ function getAllFlashcardsCombined() {
 }
 
 function initFlashcards(packName) {
-    currentPack = packName === "allFlashcards"
-        ? getAllFlashcardsCombined()
-        : allFlashcards[packName];
-
-    if (!currentPack) {
+    if (packName === "allFlashcards") {
+        currentPack = getAllFlashcardsCombined();
+    } else if (packName in allFlashcards) {
+        currentPack = allFlashcards[packName];
+    } else {
         console.error("Unknown flashcard pack:", packName);
         return;
     }
-
     currentCardIndex = 0;
     showingWord = true;
     updateFlashcard();
 }
 
+// Update flashcard text based on selected script and current card
 function updateFlashcard() {
     if (!currentPack || currentPack.length === 0) return;
     showingWord = true;
-    const card = currentPack[currentCardIndex];
     const script = scriptSelect.value;
+<<<<<<< HEAD
 
     cardText.textContent = card[script] || card.english;
+=======
+    const card = currentPack[currentCardIndex];
+    if (script === "pashto") {
+        cardText.textContent = card.pashto;
+    } else if (script === "latin") {
+        cardText.textContent = card.latin;
+    } else if (script === "phonetic") {
+        cardText.textContent = card.phonetic;
+    }
+>>>>>>> parent of ca1f3cf (added speech reader)
     cardCounter.textContent = `Card ${currentCardIndex + 1} of ${currentPack.length}`;
     updateImage(card.english);
 }
@@ -130,28 +140,34 @@ function updateImage(englishWord) {
     imageContainer.innerHTML = `<img src="${imagePath}" alt="${englishWord}" style="max-width: 300px; height: auto; border-radius: 10px;" onerror="this.style.display='none';" />`;
 }
 
+// Flip card between English and selected script
 function flipCard() {
     if (!currentPack || currentPack.length === 0) return;
+<<<<<<< HEAD
     showingWord = !showingWord;
     const card = currentPack[currentCardIndex];
     const script = scriptSelect.value;
     cardText.textContent = showingWord
         ? card[script] || card.english
         : card.english;
+=======
+    if (showingWord) {
+        cardText.textContent = currentPack[currentCardIndex].english;
+        showingWord = false;
+    } else {
+        updateFlashcard();
+    }
+>>>>>>> parent of ca1f3cf (added speech reader)
 }
 
+// Show next card in the current pack
 function nextCard() {
     if (!currentPack || currentPack.length === 0) return;
     currentCardIndex = (currentCardIndex + 1) % currentPack.length;
     updateFlashcard();
 }
 
-function previousCard() {
-    if (!currentPack || currentPack.length === 0) return;
-    currentCardIndex = (currentCardIndex - 1 + currentPack.length) % currentPack.length;
-    updateFlashcard();
-}
-
+// Fisher–Yates shuffle
 function shufflePack(pack) {
     for (let i = pack.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -159,6 +175,7 @@ function shufflePack(pack) {
     }
 }
 
+// Shuffle current pack and reset to first card
 function shuffleCurrentPack() {
     if (!currentPack || currentPack.length === 0) return;
     shufflePack(currentPack);
@@ -166,18 +183,7 @@ function shuffleCurrentPack() {
     updateFlashcard();
 }
 
-function speakCurrentCard() {
-    if (!currentPack || currentPack.length === 0) return;
-    const card = currentPack[currentCardIndex];
-    const script = scriptSelect.value;
-    const textToSpeak = showingWord
-        ? card[script] || card.english
-        : card.english;
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    speechSynthesis.speak(utterance);
-}
-
-// DOM Ready
+// Attach event listeners once DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
     const packName = document.body.getAttribute("data-pack");
     if (packName) {
@@ -188,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scriptSelect.addEventListener("change", updateFlashcard);
     }
 
+<<<<<<< HEAD
     document.querySelector(".flip-button")?.addEventListener("click", flipCard);
     document.querySelector(".next-button")?.addEventListener("click", nextCard);
     document.querySelector(".prev-button")?.addEventListener("click", previousCard);
@@ -195,3 +202,58 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".speak-button")?.addEventListener("click", speakCurrentCard);
     toggleImagesCheckbox?.addEventListener("change", updateFlashcard);
 });
+=======
+    // Attach buttons
+    const flipButton = document.querySelector(".flip-button");
+    if (flipButton) {
+        flipButton.addEventListener("click", flipCard);
+    }
+
+    const nextButton = document.querySelector(".next-button");
+    if (nextButton) {
+        nextButton.addEventListener("click", nextCard);
+    }
+
+    const shuffleButton = document.querySelector(".shuffle-button");
+    if (shuffleButton) {
+        shuffleButton.addEventListener("click", shuffleCurrentPack);
+    }
+});
+
+function previousCard() {
+    if (!currentPack || currentPack.length === 0) return;
+    currentCardIndex = (currentCardIndex - 1 + currentPack.length) % currentPack.length;
+    updateFlashcard();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const packName = document.body.getAttribute("data-pack");
+    if (packName) {
+        initFlashcards(packName);
+    }
+
+    if (scriptSelect) {
+        scriptSelect.addEventListener("change", updateFlashcard);
+    }
+
+    const flipButton = document.querySelector(".flip-button");
+    if (flipButton) {
+        flipButton.addEventListener("click", flipCard);
+    }
+
+    const nextButton = document.querySelector(".next-button");
+    if (nextButton) {
+        nextButton.addEventListener("click", nextCard);
+    }
+
+    const prevButton = document.querySelector(".prev-button");
+    if (prevButton) {
+        prevButton.addEventListener("click", previousCard);
+    }
+
+    const shuffleButton = document.querySelector(".shuffle-button");
+    if (shuffleButton) {
+        shuffleButton.addEventListener("click", shuffleCurrentPack);
+    }
+});
+>>>>>>> parent of ca1f3cf (added speech reader)

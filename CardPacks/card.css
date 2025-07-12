@@ -130,6 +130,7 @@ button:hover {
     margin-right: 8px;
     width: 20px;
     height: auto;
+<<<<<<< HEAD
 }
 
 /* Image container */
@@ -161,3 +162,6 @@ button:hover {
         max-width: 90%;
     }
 }
+=======
+}
+>>>>>>> parent of ca1f3cf (added speech reader)
