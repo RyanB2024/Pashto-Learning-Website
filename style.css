@@ -4,7 +4,6 @@ body {
   background: #81c4bb;
   color: #333;
   margin: 0;
-  padding: 0;
 }
 
 /* Typography */
@@ -110,9 +109,7 @@ nav {
 /* Layout Containers */
 .container {
   background-color: #6F9F94;
-  width: 90%;
-  max-width: 800px;
-  margin: 2vh auto 0;
+  margin: 4%;
   padding: 4vw;
   border-radius: 2em;
 }
