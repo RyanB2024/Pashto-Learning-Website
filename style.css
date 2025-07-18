@@ -7,13 +7,12 @@ body {
 }
 
 /* Typography */
-h1,
-h2 {
+h1 {
   color: #000;
 }
 
 h2 {
-  color: #323232;
+  color: #2a2a2a;
 }
 
 ul {
@@ -32,6 +31,12 @@ ul {
   max-height: 60px;
   margin: 0px;
   padding: 0px;
+}
+
+p {
+  background-color: #f3f1f1;
+  border-radius: 15px;
+  padding: 20px
 }
 
 
@@ -114,18 +119,30 @@ nav {
   border-radius: 2em;
 }
 
+.container img {
+  margin-left: 0px;
+  background-color: #f3f1f1;
+  border-radius: 30px;
+}
+
 .toggle-container {
   margin: 2vh 0;
 }
 
 /* Cards & Grid */
-.card,
 .grid-item {
-  background: #fff;
-  border-radius: 1em;
-  padding: 4vw;
+  border: 0.3vw solid #2a6c5d;
+  display: flex;
+  justify-content: center;
+  /* Horizontal centering */
+  align-items: center;
+  /* Vertical centering */
   text-align: center;
+  /* Ensures multiline text is centered */
+  padding: 4vw;
+  border-radius: 1em;
   font-size: 1.5rem;
+  background: #fff;
   transition: background 0.3s;
 }
 
@@ -209,11 +226,11 @@ p {
 
 @media (min-width: 601px) and (max-width: 991px) {
 
-  
-  .banner{
-  display: none;
-}
-  
+
+  .banner {
+    display: none;
+  }
+
   nav {
     font-size: 4.5vw;
     border-bottom-left-radius: 0px;
@@ -232,9 +249,9 @@ p {
 }
 
 @media (min-width: 992px) {
-  .banner{
-  display: none;
-}
+  .banner {
+    display: none;
+  }
 
   nav {
     font-size: 3.5vw;
