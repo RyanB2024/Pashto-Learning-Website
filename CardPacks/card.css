@@ -1,36 +1,24 @@
-/* Base Styling */
+/* ========== Base Styling ========== */
 body {
     font-family: Arial, sans-serif;
     background: #81c4bb;
     color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Layout Containers */
-
+/* ========== Layout Containers ========== */
 .container {
     margin: 2.5%;
+    max-width: 900px;
+    flex-grow: 1;
 }
 
-/* Cards */
-.card {
-    background: #fff;
-    border: 2px solid #2a6c5d;
-    border-radius: 10px;
-    padding: 2rem;
-    text-align: center;
-    cursor: pointer;
-    margin: 1rem 0;
-    transition: background 0.3s;
-    font-size: 1.5rem;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
+/* ========== Card Styling ========== */
+.card,
 .grid-item {
     background: #fff;
     border: 2px solid #2a6c5d;
@@ -41,8 +29,23 @@ body {
     transition: background 0.3s;
 }
 
+/* Shared hover effect */
+.card:hover,
 .grid-item:hover {
     background: #e6f2f0;
+}
+
+.card {
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+/* ========== Grid Layout for Multiple Cards ========== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .grid-item a {
@@ -51,7 +54,7 @@ body {
     font-weight: bold;
 }
 
-/* Buttons */
+/* ========== Buttons ========== */
 button {
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
@@ -66,41 +69,38 @@ button:hover {
     background: #1f5246;
 }
 
-/* Back Button */
+button:focus {
+    outline: 3px solid #81c4bb;
+    outline-offset: 2px;
+}
+
+/* ========== Back Button ========== */
 .back-button {
     background-color: white;
     border-radius: 50%;
     width: 50px;
-    /* Width and height make it a circle */
     height: 50px;
     display: flex;
-    /* Center image inside */
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    /* Optional: subtle shadow */
     cursor: pointer;
     border: none;
     padding: 0;
 }
 
-/* Arrow Image inside button */
 .back-button img {
-    margin-right: 8px;
     width: 20px;
-    /* Adjust based on look */
     height: auto;
+    margin: 0;
 }
 
-/*Footer*/
+/* ========== Footer ========== */
 .site-footer {
     text-align: center;
     padding: 10px;
     font-size: 0.8em;
     color: #888;
     background-color: #f9f9f9;
-    margin-top: 50%;
-    margin-bottom: -19px;
-    margin-left: -8px;
-    margin-right: -8px;
+    margin-top: 2rem;
 }
