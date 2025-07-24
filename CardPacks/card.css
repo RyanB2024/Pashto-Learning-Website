@@ -3,12 +3,12 @@ body {
     font-family: Arial, sans-serif;
     background: #81c4bb;
     color: #333;
-    margin: 2.5%;
 }
 
 /* Layout Containers */
-.toggle-container {
-    margin: 1rem 0;
+
+.container {
+    margin: 2.5%;
 }
 
 /* Cards */
@@ -90,4 +90,17 @@ button:hover {
     width: 20px;
     /* Adjust based on look */
     height: auto;
+}
+
+/*Footer*/
+.site-footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #888;
+    background-color: #f9f9f9;
+    margin-top: 50%;
+    margin-bottom: -19px;
+    margin-left: -8px;
+    margin-right: -8px;
 }
