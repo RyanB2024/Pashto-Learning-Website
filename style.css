@@ -32,6 +32,10 @@ p {
   font-size: clamp(1rem, 4vw, 2rem);
 }
 
+.double-space li {
+  margin-bottom: 1rem; /* adjust value as needed */
+}
+
 /* ========== Mobile Banner ========== */
 .banner {
   display: flex;
@@ -86,7 +90,7 @@ nav {
   border-radius: 0.75em;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: clamp(1.26rem, 2.8vw, 1.68rem);
+  font-size: clamp(1.071rem, 2.38vw, 1.428rem);
   display: flex; /* flex container for link text */
   align-items: center; /* vertically center text inside link */
   height: 100%; /* fill parent's height */
@@ -123,6 +127,14 @@ nav {
 
 .toggle-container {
   margin: 2vh 0;
+}
+
+.sub-container{
+  background-color: #1b4e42;
+  color: #d3d3d3;
+  border-radius: 2em;
+  padding: 4%;
+  margin-bottom: 5%;
 }
 
 /* ========== Cards & Grid ========== */
@@ -165,6 +177,36 @@ nav {
 
 .card:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== Search bar styling ========== */
+#noMatch {
+  display: none;
+  color: red;
+  font-weight: bold;
+}
+
+#searchResults, #dictionaryList {
+  list-style-type: none;
+}
+
+#searchResults {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+#searchResults ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#searchResults li {
+  margin-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  background-color: #f8f8f8;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
 /* ========== Buttons ========== */
