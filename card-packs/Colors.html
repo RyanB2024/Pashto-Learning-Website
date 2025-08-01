@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pashto Common Phrases Flashcards</title>
+  <title>Pashto Colors Flashcards</title>
 
   <!-- External CSS and JS -->
-  <link rel="stylesheet" href="card.css" />
-  <script src="flashcards.js" defer></script>
+  <link rel="stylesheet" href="../assets/css/card.css" />
+  <script src="../assets/js/flashcards.js" defer></script>
 </head>
 
-<body data-pack="commonPhrases">
+<body data-pack="colors">
 
   <!-- Back Button -->
   <a href="#" class="back-button" aria-label="Go Back">
-    <img src="Images/back-arrow.png" alt="Back" />
+    <img src="../assets/images/back-arrow.png" alt="Back" />
   </a>
 
   <div class="container">
@@ -30,16 +30,17 @@
       </select>
     </div>
 
-    <!-- Flashcard Display -->
+    <!-- Flashcard Section -->
     <section id="flashcard">
-      <h2>Common Phrases Flashcards</h2>
+      <h2>Colors Flashcards</h2>
       <p id="card-counter">Card 1 of N</p>
 
+      <!-- Flashcard Element -->
       <div class="card" onclick="flipCard()">
         <p id="card-text">Loading...</p>
       </div>
 
-      <!-- Navigation Controls -->
+      <!-- Control Buttons -->
       <div class="controls">
         <button class="flip-button">Flip</button>
         <button class="next-button">Next</button>
@@ -55,5 +56,4 @@
   </footer>
 
 </body>
-
 </html>

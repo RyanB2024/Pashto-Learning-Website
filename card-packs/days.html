@@ -3,22 +3,24 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pashto Days of the Week Flashcards</title>
 
-  <!-- External CSS and JS -->
-  <link rel="stylesheet" href="card.css" />
-  <script src="flashcards.js" defer></script>
+  <!-- Styles and scripts -->
+  <link rel="stylesheet" href="../assets/css/card.css" />
+  <script src="../assets/js/flashcards.js" defer></script>
 </head>
 
-<body data-pack="allFlashcards">
-  <!-- Back Navigation Button -->
+<body data-pack="day">
+
+  <!-- Back navigation -->
   <a href="#" class="back-button" aria-label="Go Back">
-    <img src="Images/back-arrow.png" alt="Back" />
+    <img src="../assets/images/back-arrow.png" alt="Back" />
   </a>
 
   <div class="container">
-    <!-- Script Selection Dropdown -->
+
+    <!-- Script selector -->
     <div class="toggle-container">
       <label for="script-select">Choose Script:</label>
       <select id="script-select">
@@ -28,23 +30,21 @@
       </select>
     </div>
 
-    <!-- Flashcard Section -->
+    <!-- Flashcard section -->
     <section id="flashcard">
-      <h2>All Flashcards</h2>
+      <h2>Days of the Week Flashcards</h2>
       <p id="card-counter">Card 1 of N</p>
 
-      <!-- Card Text Display -->
       <div class="card" onclick="flipCard()">
         <p id="card-text">Loading...</p>
       </div>
 
-      <!-- Navigation and Interaction Controls -->
+      <!-- Flashcard controls -->
       <div class="controls">
         <button class="flip-button">Flip</button>
         <button class="next-button">Next</button>
         <button class="prev-button">Previous</button>
         <button class="shuffle-button">Shuffle</button>
-        <button class="speak-button" aria-label="Speak Card Text">🔊</button>
       </div>
     </section>
   </div>
@@ -53,6 +53,7 @@
   <footer class="site-footer">
     &copy; 2025 LearnPashtoToday. Project by Ryan Blestowe.
   </footer>
+
 </body>
 
 </html>

@@ -4,23 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pashto Days of the Week Flashcards</title>
+  <title>Pashto Clothing Flashcards</title>
 
-  <!-- Styles and scripts -->
-  <link rel="stylesheet" href="card.css" />
-  <script src="flashcards.js" defer></script>
+  <!-- External CSS and JS -->
+  <link rel="stylesheet" href="../assets/css/card.css" />
+  <script src="../assets/js/flashcards.js" defer></script>
 </head>
 
-<body data-pack="day">
-
-  <!-- Back navigation -->
+<body data-pack="clothing">
+  <!-- Back Button -->
   <a href="#" class="back-button" aria-label="Go Back">
-    <img src="Images/back-arrow.png" alt="Back" />
+    <img src="../assets/images/back-arrow.png" alt="Back" />
   </a>
 
   <div class="container">
-
-    <!-- Script selector -->
+    <!-- Script Selector -->
     <div class="toggle-container">
       <label for="script-select">Choose Script:</label>
       <select id="script-select">
@@ -30,16 +28,17 @@
       </select>
     </div>
 
-    <!-- Flashcard section -->
+    <!-- Flashcard Display -->
     <section id="flashcard">
-      <h2>Days of the Week Flashcards</h2>
+      <h2>Clothing Flashcards</h2>
       <p id="card-counter">Card 1 of N</p>
 
+      <!-- Card Text -->
       <div class="card" onclick="flipCard()">
         <p id="card-text">Loading...</p>
       </div>
 
-      <!-- Flashcard controls -->
+      <!-- Controls -->
       <div class="controls">
         <button class="flip-button">Flip</button>
         <button class="next-button">Next</button>
@@ -53,7 +52,6 @@
   <footer class="site-footer">
     &copy; 2025 LearnPashtoToday. Project by Ryan Blestowe.
   </footer>
-
 </body>
 
 </html>
