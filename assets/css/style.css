@@ -35,31 +35,38 @@ h4 {
   font-size: clamp(1.5rem, 5vw, 2.75rem);
 }
 
-/* Unused
-h5 {
-  
-}
-
-h6 {
-  
-}
-*/
-
 p {
   background-color: #f3f1f1;
+  color: #2a2a2a;
   border-radius: 15px;
   padding: 20px;
   font-size: clamp(1rem, 4vw, 2rem);
 }
 
 ul,
-.double-space {
+.double-space-lite {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5vw;
   list-style: none;
-  padding-left: 0;
+  padding-left: 4%;
+}
+
+.double-space {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5vw;
 }
 
 .double-space li {
   margin-bottom: 1rem;
+}
+
+.double-space-vertical {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ====================================
@@ -68,10 +75,8 @@ ul,
 .container {
   margin: 4%;
   padding: 4vw;
-  max-width: 900px;
   border-radius: 2em;
   background-color: #6F9F94;
-  flex: 1 0 auto;
 }
 
 .sub-container {
@@ -79,7 +84,32 @@ ul,
   color: #d3d3d3;
   border-radius: 2em;
   padding: 4%;
+}
+
+/* Adds spacing between multiple <ul>s */
+.sub-container ul {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.sub-container-lite {
+  background-color: #1b4e42;
+  color: #d3d3d3;
+  border-radius: 2em;
+  padding: 4%;
+  margin-left: 4%;
+}
+
+.white-container {
+  background-color: #f3f1f1;
+  border-radius: 2em;
+  padding: 4%;
   margin-bottom: 5%;
+}
+
+.white-container-mini {
+  background-color: #f3f1f1;
+  border-radius: 2em;
 }
 
 .toggle-container {
@@ -118,7 +148,6 @@ nav {
 
 .logo img {
   height: 10vw;
-  max-height: 80px;
   min-height: 40px;
   padding-left: 1vw;
   display: block;

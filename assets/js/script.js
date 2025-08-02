@@ -4,7 +4,7 @@
  * 
  * @param {HTMLButtonElement} button - The button that was clicked.
  */
-function checkAnswer(button) {
+function checkSimpleQuizAnswer(button) {
   const correctAnswer = "manana";
   const feedback = document.getElementById("quiz-feedback");
   const isCorrect = button.textContent.trim().toLowerCase() === correctAnswer;

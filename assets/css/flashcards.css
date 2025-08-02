@@ -1,0 +1,47 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    padding: 1rem;
+    text-align: center;
+}
+
+#flashcard-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard {
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    margin: 1rem 0;
+}
+
+.controls button {
+    margin: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background: #0077cc;
+    color: white;
+    border-radius: 5px;
+}
+
+.controls button:hover {
+    background: #005fa3;
+}
+
+select {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#card-counter {
+    margin-top: 1rem;
+    color: #444;
+}
