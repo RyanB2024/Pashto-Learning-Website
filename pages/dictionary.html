@@ -40,110 +40,103 @@
 
         <!-- Title + Search -->
         <section class="container">
-            <div class="sub-container">
-                <h1>Dictionary</h1>
-                <input type="text" id="searchBar" placeholder="Search for a word..." />
-                <p id="noMatch">No results found.</p>
-                <p id="searchResults"></p>
-            </div>
+            <h1>Dictionary</h1>
+            <input type="text" id="searchBar" placeholder="Search for a word..." />
+            <p id="noMatch">No results found.</p>
+            <p id="searchResults"></p>
+
         </section>
 
         <!-- Main Content -->
         <section class="container" id="dictionaryList">
-            <div class="double-space-lite">
-                <div class="sub-container">
-                    <strong>Clothing:</strong>
-                    <ul class="double-space">
-                        <li>English: "Shirt" | Pashto: "کمیس" | Latin: "Kamees" | Phonetic: "ka-mees"</li>
-                        <li>English: "Pants" | Pashto: "پتلون" | Latin: "Patloon" | Phonetic: "pat-loon"</li>
-                        <li>English: "Hat" | Pashto: "خولۍ" | Latin: "Kholai" | Phonetic: "kho-lai"</li>
-                        <li>English: "Shoes" | Pashto: "بوټان" | Latin: "Bootan" | Phonetic: "boo-tan"</li>
-                        <li>English: "Scarf" | Pashto: "شال" | Latin: "Shaal" | Phonetic: "shaal"</li>
-                        <li>English: "Jacket" | Pashto: "جرابۍ" | Latin: "Joraabee" | Phonetic: "jo-ra-bee"</li>
-                        <li>English: "Dress" | Pashto: "کالي" | Latin: "Kaali" | Phonetic: "kaa-lee"</li>
-                        <li>English: "Coat" | Pashto: "کوټ" | Latin: "Kot" | Phonetic: "kot"</li>
-                        <li>English: "Gloves" | Pashto: "لاس ګرمۍ" | Latin: "Las Garmi" | Phonetic: "las gar-mee"</li>
-                        <li>English: "Belt" | Pashto: "کمربند" | Latin: "Kamarband" | Phonetic: "ka-mar-band"</li>
-                        <li>English: "Tie" | Pashto: "ټای" | Latin: "Tie" | Phonetic: "tie"</li>
-                        <li>English: "Socks" | Pashto: "جرابې" | Latin: "Jaraabay" | Phonetic: "ja-ra-bay"</li>
-                        <li>English: "Sweater" | Pashto: "سویټر" | Latin: "Sweater" | Phonetic: "swea-ter"</li>
-                        <li>English: "Shorts" | Pashto: "شارټس" | Latin: "Shorts" | Phonetic: "shorts"</li>
-                        <li>English: "Boots" | Pashto: "بوټونه" | Latin: "Bootona" | Phonetic: "boo-to-na"</li>
-                    </ul>
-                </div>
-                <div class="sub-container">
-                    <strong>Colors:</strong>
-                    <ul class="double-space">
-                        <li>English: "Red" | Pashto: "سره" | Latin: "Sra" | Phonetic: "sra"</li>
-                        <li>English: "Blue" | Pashto: "شنه" | Latin: "Shna" | Phonetic: "shna"</li>
-                        <li>English: "Green" | Pashto: "شنه" | Latin: "Shna" | Phonetic: "shna"</li>
-                        <li>English: "Yellow" | Pashto: "زیړ" | Latin: "Zeeṛ" | Phonetic: "zee-r"</li>
-                        <li>English: "Black" | Pashto: "تور" | Latin: "Tor" | Phonetic: "tor"</li>
-                        <li>English: "White" | Pashto: "سپین" | Latin: "Spin" | Phonetic: "spin"</li>
-                        <li>English: "Orange" | Pashto: "نارنجي" | Latin: "Narenji" | Phonetic: "na-ren-ji"</li>
-                        <li>English: "Purple" | Pashto: "ارغواني" | Latin: "Arghwani" | Phonetic: "ar-ghwa-ni"</li>
-                        <li>English: "Brown" | Pashto: "نسواري" | Latin: "Naswari" | Phonetic: "nas-wa-ri"</li>
-                        <li>English: "Pink" | Pashto: "ګلابي" | Latin: "Gulabi" | Phonetic: "gu-la-bi"</li>
-                    </ul>
-                </div>
-                <div class="sub-container">
-                    <strong>Common Phrases:</strong>
-                    <ul class="double-space">
-                        <li>English: "Hello" | Pashto: "سلام" | Latin: "Salam" | Phonetic: "sa-lam"</li>
-                        <li>English: "Thank you" | Pashto: "مننه" | Latin: "Manana" | Phonetic: "ma-na-na"</li>
-                        <li>English: "Please" | Pashto: "لطفا" | Latin: "Lutfan" | Phonetic: "lut-fan"</li>
-                        <li>English: "Yes" | Pashto: "هو" | Latin: "Ho" | Phonetic: "ho"</li>
-                        <li>English: "No" | Pashto: "نه" | Latin: "Na" | Phonetic: "na"</li>
-                        <li>English: "How are you?" | Pashto: "څنګه یی؟" | Latin: "Tsenga yi?" | Phonetic: "tse-nga yi"
-                        </li>
-                        <li>English: "Goodbye" | Pashto: "خدای پامان" | Latin: "Khudai paaman" | Phonetic: "khu-dai
-                            paa-man"
-                        </li>
-                    </ul>
-                </div>
-                <div class="sub-container">
-                    <strong>Days of the Week:</strong>
-                    <ul class="double-space">
-                        <li>English: "Monday" | Pashto: "دوشنبه" | Latin: "Dushanba" | Phonetic: "du-shan-ba"</li>
-                        <li>English: "Tuesday" | Pashto: "سه شنبه" | Latin: "Se shanba" | Phonetic: "se shan-ba"</li>
-                        <li>English: "Wednesday" | Pashto: "چهارشنبه" | Latin: "Char shanba" | Phonetic: "char shan-ba"
-                        </li>
-                        <li>English: "Thursday" | Pashto: "پنجشنبه" | Latin: "Panj shanba" | Phonetic: "panj shan-ba"
-                        </li>
-                        <li>English: "Friday" | Pashto: "جمعه" | Latin: "Juma" | Phonetic: "ju-ma"</li>
-                        <li>English: "Saturday" | Pashto: "شنبه" | Latin: "Shanba" | Phonetic: "shan-ba"</li>
-                        <li>English: "Sunday" | Pashto: "یکشنبه" | Latin: "Yakshanba" | Phonetic: "yak-shan-ba"</li>
-                    </ul>
-                </div>
-                <div class="sub-container">
-                    <strong>Numbers:</strong>
-                    <ul class="double-space">
-                        <li>English: "One" | Pashto: "یو" | Latin: "Yaw" | Phonetic: "yaw"</li>
-                        <li>English: "Two" | Pashto: "دو" | Latin: "Dwa" | Phonetic: "dwa"</li>
-                        <li>English: "Three" | Pashto: "درې" | Latin: "Dre" | Phonetic: "dre"</li>
-                        <li>English: "Four" | Pashto: "څلور" | Latin: "Tsalor" | Phonetic: "tsa-lor"</li>
-                        <li>English: "Five" | Pashto: "پنځه" | Latin: "Pinza" | Phonetic: "pin-za"</li>
-                        <li>English: "Six" | Pashto: "شپږ" | Latin: "Shpag" | Phonetic: "shpag"</li>
-                        <li>English: "Seven" | Pashto: "اووه" | Latin: "Owa" | Phonetic: "o-wa"</li>
-                        <li>English: "Eight" | Pashto: "اته" | Latin: "Ata" | Phonetic: "a-ta"</li>
-                        <li>English: "Nine" | Pashto: "نهه" | Latin: "Naha" | Phonetic: "na-ha"</li>
-                        <li>English: "Ten" | Pashto: "لس" | Latin: "Las" | Phonetic: "las"</li>
+            <div class="sub-container">
+                <strong>Clothing:</strong>
+                <ul class="double-space">
+                    <li>English: "Shirt" | Pashto: "کمیس" | Latin: "Kamees" | Phonetic: "ka-mees"</li>
+                    <li>English: "Pants" | Pashto: "پتلون" | Latin: "Patloon" | Phonetic: "pat-loon"</li>
+                    <li>English: "Hat" | Pashto: "خولۍ" | Latin: "Kholai" | Phonetic: "kho-lai"</li>
+                    <li>English: "Shoes" | Pashto: "بوټان" | Latin: "Bootan" | Phonetic: "boo-tan"</li>
+                    <li>English: "Scarf" | Pashto: "شال" | Latin: "Shaal" | Phonetic: "shaal"</li>
+                    <li>English: "Jacket" | Pashto: "جرابۍ" | Latin: "Joraabee" | Phonetic: "jo-ra-bee"</li>
+                    <li>English: "Dress" | Pashto: "کالي" | Latin: "Kaali" | Phonetic: "kaa-lee"</li>
+                    <li>English: "Coat" | Pashto: "کوټ" | Latin: "Kot" | Phonetic: "kot"</li>
+                    <li>English: "Gloves" | Pashto: "لاس ګرمۍ" | Latin: "Las Garmi" | Phonetic: "las gar-mee"</li>
+                    <li>English: "Belt" | Pashto: "کمربند" | Latin: "Kamarband" | Phonetic: "ka-mar-band"</li>
+                    <li>English: "Tie" | Pashto: "ټای" | Latin: "Tie" | Phonetic: "tie"</li>
+                    <li>English: "Socks" | Pashto: "جرابې" | Latin: "Jaraabay" | Phonetic: "ja-ra-bay"</li>
+                    <li>English: "Sweater" | Pashto: "سویټر" | Latin: "Sweater" | Phonetic: "swea-ter"</li>
+                    <li>English: "Shorts" | Pashto: "شارټس" | Latin: "Shorts" | Phonetic: "shorts"</li>
+                    <li>English: "Boots" | Pashto: "بوټونه" | Latin: "Bootona" | Phonetic: "boo-to-na"</li>
+                </ul>
+            </div>
+            <div class="sub-container">
+                <strong>Colors:</strong>
+                <ul class="double-space">
+                    <li>English: "Red" | Pashto: "سره" | Latin: "Sra" | Phonetic: "sra"</li>
+                    <li>English: "Blue" | Pashto: "شنه" | Latin: "Shna" | Phonetic: "shna"</li>
+                    <li>English: "Green" | Pashto: "شنه" | Latin: "Shna" | Phonetic: "shna"</li>
+                    <li>English: "Yellow" | Pashto: "زیړ" | Latin: "Zeeṛ" | Phonetic: "zee-r"</li>
+                    <li>English: "Black" | Pashto: "تور" | Latin: "Tor" | Phonetic: "tor"</li>
+                    <li>English: "White" | Pashto: "سپین" | Latin: "Spin" | Phonetic: "spin"</li>
+                    <li>English: "Orange" | Pashto: "نارنجي" | Latin: "Narenji" | Phonetic: "na-ren-ji"</li>
+                    <li>English: "Purple" | Pashto: "ارغواني" | Latin: "Arghwani" | Phonetic: "ar-ghwa-ni"</li>
+                    <li>English: "Brown" | Pashto: "نسواري" | Latin: "Naswari" | Phonetic: "nas-wa-ri"</li>
+                    <li>English: "Pink" | Pashto: "ګلابي" | Latin: "Gulabi" | Phonetic: "gu-la-bi"</li>
+                </ul>
+            </div>
+            <div class="sub-container">
+                <strong>Common Phrases:</strong>
+                <ul class="double-space">
+                    <li>English: "Hello" | Pashto: "سلام" | Latin: "Salam" | Phonetic: "sa-lam"</li>
+                    <li>English: "Thank you" | Pashto: "مننه" | Latin: "Manana" | Phonetic: "ma-na-na"</li>
+                    <li>English: "Please" | Pashto: "لطفا" | Latin: "Lutfan" | Phonetic: "lut-fan"</li>
+                    <li>English: "Yes" | Pashto: "هو" | Latin: "Ho" | Phonetic: "ho"</li>
+                    <li>English: "No" | Pashto: "نه" | Latin: "Na" | Phonetic: "na"</li>
+                    <li>English: "How are you?" | Pashto: "څنګه یی؟" | Latin: "Tsenga yi?" | Phonetic: "tse-nga yi"</li>
+                    <li>English: "Goodbye" | Pashto: "خدای پامان" | Latin: "Khudai paaman" | Phonetic: "khu-dai paa-man"
+                    </li>
+                </ul>
+            </div>
+            <div class="sub-container">
+                <strong>Days of the Week:</strong>
+                <ul class="double-space">
+                    <li>English: "Monday" | Pashto: "دوشنبه" | Latin: "Dushanba" | Phonetic: "du-shan-ba"</li>
+                    <li>English: "Tuesday" | Pashto: "سه شنبه" | Latin: "Se shanba" | Phonetic: "se shan-ba"</li>
+                    <li>English: "Wednesday" | Pashto: "چهارشنبه" | Latin: "Char shanba" | Phonetic: "char shan-ba"</li>
+                    <li>English: "Thursday" | Pashto: "پنجشنبه" | Latin: "Panj shanba" | Phonetic: "panj shan-ba"</li>
+                    <li>English: "Friday" | Pashto: "جمعه" | Latin: "Juma" | Phonetic: "ju-ma"</li>
+                    <li>English: "Saturday" | Pashto: "شنبه" | Latin: "Shanba" | Phonetic: "shan-ba"</li>
+                    <li>English: "Sunday" | Pashto: "یکشنبه" | Latin: "Yakshanba" | Phonetic: "yak-shan-ba"</li>
+                </ul>
+            </div>
+            <div class="sub-container">
+                <strong>Numbers:</strong>
+                <ul class="double-space">
+                    <li>English: "One" | Pashto: "یو" | Latin: "Yaw" | Phonetic: "yaw"</li>
+                    <li>English: "Two" | Pashto: "دو" | Latin: "Dwa" | Phonetic: "dwa"</li>
+                    <li>English: "Three" | Pashto: "درې" | Latin: "Dre" | Phonetic: "dre"</li>
+                    <li>English: "Four" | Pashto: "څلور" | Latin: "Tsalor" | Phonetic: "tsa-lor"</li>
+                    <li>English: "Five" | Pashto: "پنځه" | Latin: "Pinza" | Phonetic: "pin-za"</li>
+                    <li>English: "Six" | Pashto: "شپږ" | Latin: "Shpag" | Phonetic: "shpag"</li>
+                    <li>English: "Seven" | Pashto: "اووه" | Latin: "Owa" | Phonetic: "o-wa"</li>
+                    <li>English: "Eight" | Pashto: "اته" | Latin: "Ata" | Phonetic: "a-ta"</li>
+                    <li>English: "Nine" | Pashto: "نهه" | Latin: "Naha" | Phonetic: "na-ha"</li>
+                    <li>English: "Ten" | Pashto: "لس" | Latin: "Las" | Phonetic: "las"</li>
 
-                    </ul>
-                </div>
-                <div class="sub-container">
-                    <strong>Travel:</strong>
-                    <ul class="double-space">
-                        <li>English: "Airport" | Pashto: "هوایی ډګر" | Latin: "Hawai Dagar" | Phonetic: "ho-wa-i da-gar"
-                        </li>
-                        <li>English: "Bus" | Pashto: "بس" | Latin: "Bus" | Phonetic: "bus"</li>
-                        <li>English: "Train" | Pashto: "رېل ګاډی" | Latin: "Rail Gadi" | Phonetic: "rail ga-di"</li>
-                        <li>English: "Ticket" | Pashto: "ټکټ" | Latin: "Ticket" | Phonetic: "tick-et"</li>
-                        <li>English: "Hotel" | Pashto: "هوټل" | Latin: "Hotel" | Phonetic: "ho-tel"</li>
-                        <li>English: "Passport" | Pashto: "پاسپورټ" | Latin: "Passport" | Phonetic: "pass-port"</li>
-                        <li>English: "Map" | Pashto: "نقشه" | Latin: "Naqsha" | Phonetic: "naq-sha"</li>
-                    </ul>
-                </div>
+                </ul>
+            </div>
+            <div class="sub-container">
+                <strong>Travel:</strong>
+                <ul class="double-space">
+                    <li>English: "Airport" | Pashto: "هوایی ډګر" | Latin: "Hawai Dagar" | Phonetic: "ho-wa-i da-gar"
+                    </li>
+                    <li>English: "Bus" | Pashto: "بس" | Latin: "Bus" | Phonetic: "bus"</li>
+                    <li>English: "Train" | Pashto: "رېل ګاډی" | Latin: "Rail Gadi" | Phonetic: "rail ga-di"</li>
+                    <li>English: "Ticket" | Pashto: "ټکټ" | Latin: "Ticket" | Phonetic: "tick-et"</li>
+                    <li>English: "Hotel" | Pashto: "هوټل" | Latin: "Hotel" | Phonetic: "ho-tel"</li>
+                    <li>English: "Passport" | Pashto: "پاسپورټ" | Latin: "Passport" | Phonetic: "pass-port"</li>
+                    <li>English: "Map" | Pashto: "نقشه" | Latin: "Naqsha" | Phonetic: "naq-sha"</li>
+                </ul>
             </div>
         </section>
     </main>

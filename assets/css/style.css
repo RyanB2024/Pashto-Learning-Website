@@ -3,13 +3,12 @@
    ==================================== */
 html,
 body {
-  height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #81c4bb;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: #6ba29e;
   color: #333;
-  display: flex;
-  flex-direction: column;
 }
 
 /* ====================================
@@ -62,11 +61,84 @@ ul,
 
 .double-space li {
   margin-bottom: 1rem;
+  align-items: flex-start;
 }
 
 .double-space-vertical {
   display: flex;
   flex-direction: column;
+}
+
+/* Container */
+.practice-container {
+  background-color: #1e4e44;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* center items inside the container */
+  border-radius: 20px;
+  text-align: center;
+  padding: 35px;
+  max-width: 650px;
+  width: 90%;
+  box-sizing: border-box;
+
+  /* Remove margin that prevents centering */
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.practice-container a {
+  display: inline-block;
+  padding: 15px 95px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #1e4e44;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.practice-container a:hover {
+  background-color: #d0e8e4;
+}
+
+
+
+/* Title */
+.practice-title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+/* Menu Layout */
+.practice-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Buttons */
+.practice-button {
+  background-color: white;
+  color: #1e4e44;
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.practice-button:hover {
+  background-color: #d4efec;
+  transform: translateY(-2px);
 }
 
 /* ====================================
