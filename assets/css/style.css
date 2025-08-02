@@ -1,15 +1,20 @@
-/* ========== Base Styling ========== */
-body, html {
+/* ====================================
+   Global Base Styling
+   ==================================== */
+html,
+body {
   height: 100%;
   margin: 0;
-  display: flex;
-  flex-direction: column;
   font-family: Arial, sans-serif;
   background: #81c4bb;
   color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ========== Typography ========== */
+/* ====================================
+   Typography
+   ==================================== */
 h1 {
   color: #ffffff;
   font-size: clamp(2rem, 6vw, 3.5rem);
@@ -20,11 +25,6 @@ h2 {
   font-size: clamp(1.5rem, 5vw, 2.75rem);
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
 p {
   background-color: #f3f1f1;
   border-radius: 15px;
@@ -32,32 +32,64 @@ p {
   font-size: clamp(1rem, 4vw, 2rem);
 }
 
-.double-space li {
-  margin-bottom: 1rem; /* adjust value as needed */
+ul,
+.double-space {
+  list-style: none;
+  padding-left: 0;
 }
 
-/* ========== Mobile Banner ========== */
+.double-space li {
+  margin-bottom: 1rem;
+}
+
+/* ====================================
+   Layout Containers
+   ==================================== */
+.container {
+  margin: 4%;
+  padding: 4vw;
+  max-width: 900px;
+  border-radius: 2em;
+  background-color: #6F9F94;
+  flex: 1 0 auto;
+}
+
+.sub-container {
+  background-color: #1b4e42;
+  color: #d3d3d3;
+  border-radius: 2em;
+  padding: 4%;
+  margin-bottom: 5%;
+}
+
+.toggle-container {
+  margin: 2vh 0;
+}
+
+/* ====================================
+   Navigation and Banner
+   ==================================== */
 .banner {
   display: flex;
-  justify-content: center; /* horizontal centering */
-  align-items: center; /* vertical centering */
+  justify-content: center;
+  align-items: center;
   background-color: #6F9F94;
   max-height: 60px;
   margin: 0;
   padding: 0;
 }
 
-/* ========== Navigation ========== */
 nav {
   background-color: #0b5a49;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* vertically center children */
+  align-items: center;
   padding: 1.5vh 4vw;
   flex-wrap: wrap;
   min-height: 60px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  font-size: 3.5vw;
 }
 
 .logo {
@@ -69,7 +101,7 @@ nav {
   max-height: 80px;
   min-height: 40px;
   padding-left: 1vw;
-  display: block; /* removes inline spacing issues */
+  display: block;
 }
 
 .nav-items {
@@ -78,7 +110,7 @@ nav {
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: center; /* vertically center nav links */
+  align-items: center;
 }
 
 .nav-link {
@@ -91,9 +123,9 @@ nav {
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: clamp(1.071rem, 2.38vw, 1.428rem);
-  display: flex; /* flex container for link text */
-  align-items: center; /* vertically center text inside link */
-  height: 100%; /* fill parent's height */
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-link:hover,
@@ -106,38 +138,35 @@ nav {
 
 .nav-link:active {
   background-color: #1f5246;
-  color: white;
   transform: scale(0.98);
+  color: white;
 }
 
-/* ========== Layout Containers ========== */
-.container {
-  background-color: #6F9F94;
-  margin: 4%;
-  padding: 4vw;
-  border-radius: 2em;
-  flex: 1 0 auto; /* allow container to grow and push footer down */
+/* ====================================
+   Cards and Grids
+   ==================================== */
+.card,
+.grid-item {
+  background: #fff;
+  border: 2px solid #2a6c5d;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
 }
 
-.container img {
-  margin-left: 0;
-  background-color: #f3f1f1;
-  border-radius: 30px;
-}
-
-.toggle-container {
+.card {
   margin: 2vh 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
-.sub-container{
-  background-color: #1b4e42;
-  color: #d3d3d3;
-  border-radius: 2em;
-  padding: 4%;
-  margin-bottom: 5%;
+.card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background: #e6f2f0;
 }
 
-/* ========== Cards & Grid ========== */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
@@ -145,71 +174,19 @@ nav {
   margin-top: 4vw;
 }
 
-.grid-item {
-  border: 0.3vw solid #2a6c5d;
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  text-align: center; /* Ensures multiline text is centered */
-  padding: 4vw;
-  border-radius: 1em;
-  font-size: 1.5rem;
-  background: #fff;
-  transition: background 0.3s;
+.grid-item a {
+  text-decoration: none;
+  color: #2a6c5d;
+  font-weight: bold;
 }
 
 .grid-item:hover {
   background: #e6f2f0;
 }
 
-.grid-item a {
-  text-decoration: none;
-  color: #404140;
-  font-weight: bold;
-}
-
-.card {
-  border: 0.5vw solid #2a6c5d;
-  cursor: pointer;
-  margin: 2vh 0;
-  transition: box-shadow 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* ========== Search bar styling ========== */
-#noMatch {
-  display: none;
-  color: red;
-  font-weight: bold;
-}
-
-#searchResults, #dictionaryList {
-  list-style-type: none;
-}
-
-#searchResults {
-  display: none;
-  margin-top: 1.5rem;
-}
-
-#searchResults ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-#searchResults li {
-  margin-left: 1.5rem;
-  margin-bottom: 0.75rem;
-  background-color: #f8f8f8;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-
-/* ========== Buttons ========== */
+/* ====================================
+   Buttons
+   ==================================== */
 button {
   margin-top: 1vh;
   padding: 1vh 2vw;
@@ -231,7 +208,131 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* ========== Footer ========== */
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 1em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #2a6c5d;
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+/* ====================================
+   Quiz Interface
+   ==================================== */
+#choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2vh 0;
+}
+
+#choices-container button {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #ffffff;
+  color: #2a6c5d;
+  border: 2px solid #2a6c5d;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+#choices-container button:hover {
+  background-color: #e6f2f0;
+  color: #0b5a49;
+}
+
+#textAnswer {
+  margin-top: 1vh;
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 1.1rem;
+  border-radius: 0.5em;
+  border: 1px solid #ccc;
+}
+
+#feedback {
+  font-weight: bold;
+  margin-top: 1vh;
+  font-size: 1.2rem;
+}
+
+select#displayMode {
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 1rem;
+}
+
+/* ====================================
+   Search Results
+   ==================================== */
+#noMatch {
+  display: none;
+  color: red;
+  font-weight: bold;
+}
+
+#searchResults,
+#dictionaryList {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#searchResults {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+#searchResults li {
+  margin-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  background-color: #f8f8f8;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* ====================================
+   Footer
+   ==================================== */
 .site-footer {
   text-align: center;
   padding: 10px;
@@ -239,14 +340,16 @@ button:focus-visible {
   color: #888;
   background-color: #f9f9f9;
   flex-shrink: 0;
+  margin-top: 2rem;
 }
 
-/* ========== Media Queries - Mobile First ========== */
+/* ====================================
+   Responsive Design - Media Queries
+   ==================================== */
 @media (max-width: 600px) {
   nav {
     justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 
   .logo {
@@ -255,9 +358,6 @@ button:focus-visible {
 
   .nav-items {
     width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
     justify-content: center;
     gap: 5vw;
   }
@@ -270,8 +370,7 @@ button:focus-visible {
 
   nav {
     font-size: 4.5vw;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
   }
 
   .logo img {
@@ -292,8 +391,7 @@ button:focus-visible {
 
   nav {
     font-size: 3.5vw;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
   }
 
   .logo img {
