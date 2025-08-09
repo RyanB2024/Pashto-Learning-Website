@@ -24,7 +24,7 @@
 
   async function init() {
     try {
-      const resp = await fetch(`${Utils.basePath}/assets/data/flashcards.json`);
+      const resp = await fetch('../assets/data/flashcards.json');
       fullData = await resp.json();
       renderFullDictionary(); // optional: pre-render dictionary
     } catch (err) {
