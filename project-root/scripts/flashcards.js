@@ -51,7 +51,7 @@ const Flashcards = (function (utils) {
 
         // Fetch data file
         try {
-            const resp = await fetch(`${Utils.basePath}project-root/assets/data/flashcards.json`);
+            const resp = await fetch('../assets/data/flashcards.json');
             if (!resp.ok) throw new Error('Failed to load flashcard data');
             data = await resp.json();
         } catch (err) {
