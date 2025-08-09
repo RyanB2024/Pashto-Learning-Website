@@ -1,86 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learn Pashto</title>
-    <!DOCTYPE html>
-    <html lang="en">
+    <!--
+    index.html
+    Landing page for LearnPashtoToday
+    - Uses consolidated CSS and shared header/nav partial
+    - Accessible: meaningful headings, alt text, responsive meta
+  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Learn Pashto Today</title>
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Select Flashcard Pack</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
-        <script src="assets/js/script.js" defer></script>
-    </head>
-
+    <link rel="stylesheet" href="/project-root/assets/css/main.css" />
+    <meta name="description"
+        content="Learn Pashto language basics with flashcards, quizzes and a searchable dictionary. Respectful approach to Afghan culture." />
 </head>
 
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="banner">
-            <h1>Learn Pashto Today!</h1>
-        </div>
-
-        <!-- Navigation Menu -->
-        <nav>
-            <div class="logo">
-                <img src="assets/images/Pashto.svg" alt="Brand logo" />
+    <header role="banner" class="banner">
+        <nav aria-label="Main Navigation" class="card"
+            style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="logo" style="display:flex;align-items:center;gap:.75rem">
+                <img src="/project-root/assets/images/pashto-logo.svg" alt="Learn Pashto Today — logo" style="height:56px" />
+                <div style="color:white;font-weight:700">LearnPashtoToday</div>
             </div>
-            <ul class="nav-items">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="pages/Practice.html" class="nav-link">Practice</a></li>
-                <li><a href="pages/dictionary.html" class="nav-link">Dictionary</a></li>
 
+            <ul class="nav-items" role="menubar" aria-label="Primary">
+                <li role="none"><a role="menuitem" class="nav-link" href="../index.html">Home</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="/project-root/pages/practice.html">Practice</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="/project-root/pages/dictionary.html">Dictionary</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Introduction Section -->
-    <main class="container">
-        <div class="sub-container">
-            <h1>Welcome to your Pashto learning journey!</h1>
-        </div>
-        <p>
-            Pashto (PASH-toh) is an Eastern Iranian language in the Indo-European language family,
-            natively spoken in northwestern Pakistan and southern and eastern Afghanistan.
-            It has official status in Afghanistan and the Pakistani province of Khyber Pakhtunkhwa.
-            It is known in historical Persian literature as Afghani (افغانی, Afghāni).
-        </p>
-        <div class="white-container">
-            <img src="assets/images/PashtoMap.png" alt="Map of Pashto-speaking regions" width="90%" />
-        </div>
+    <main class="container" id="main" role="main" tabindex="-1">
+        <section class="card" aria-labelledby="welcome-title">
+            <h1 id="welcome-title">Welcome to Learn Pashto Today</h1>
+            <p>
+                A small, respectful, accessible site to help you learn Pashto — the main language of Afghanistan.
+                Use the Practice area to start flashcards, quizzes, and listening exercises. This site is designed to
+                work on desktop and mobile, and follows accessibility-first principles.
+            </p>
+        </section>
+
+        <section class="card" aria-labelledby="scripts-title" style="margin-top:1rem">
+            <h2 id="scripts-title">Scripts & Pronunciation</h2>
+            <p><strong>Pashto script</strong> (native writing). <strong>Latin</strong> (romanization).
+                <strong>Phonetic</strong> (English-friendly pronunciation). Switch between them in the flashcards tool.
+            </p>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1rem">
+                <a class="practice-button" href="/project-root/pages/flashcards.html">Start Flashcards</a>
+                <a class="practice-button" href="/project-root/pages/qa.html">Take a Quiz</a>
+                <a class="practice-button" href="/project-root/pages/dictionary.html">Browse Dictionary</a>
+            </div>
+        </section>
+
+        <section aria-labelledby="map-title" class="card" style="margin-top:1rem">
+            <h2 id="map-title">Pashto Speaking Regions</h2>
+            <img src="/project-root/assets/images/pashto-map.png"
+                alt="Map showing Pashto-speaking regions (Afghanistan and parts of Pakistan)"
+                style="max-width:100%;height:auto;border-radius:8px" />
+            <p style="margin-top:.5rem;font-size:.95rem;color:var(--muted)">
+                Note: dialects and orthography vary across regions. Consider consulting a native speaker when refining
+                audio and translations.
+            </p>
+        </section>
     </main>
 
-    <!-- Script Explanation Section -->
-    <section class="container">
-        <div class="sub-container">
-            <h1>Understanding the Scripts to Learn!</h1>
-        </div>
-
-        <p>
-            <strong>Pashto Script:</strong> The native script used in Afghanistan and Pakistan.<br />
-            <em>Example: سلام (Hello)</em>
-        </p>
-        <p>
-            <strong>Latin Script:</strong> A representation using the English alphabet for easier reading.<br />
-            <em>Example: salaam</em>
-        </p>
-
-        <p>
-            <strong>Phonetic:</strong> An approximation of pronunciation using familiar English sounds.<br />
-            <em>Example: suh-laam</em>
-        </p>
-
-        </ul>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        &copy; 2025 LearnPashtoToday. Project by Ryan Blestowe.
+    <footer class="site-footer" role="contentinfo">
+        &copy; 2025 LearnPashtoToday. Respectful learning &mdash; created with care.
     </footer>
 </body>
 

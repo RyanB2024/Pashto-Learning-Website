@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--
+    practice.html
+    Landing page for practice modules (flashcards, quiz, listening, etc.)
+    - Simple, responsive menu that links to pages
+  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Practice — Learn Pashto</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body>
+    <header role="banner" class="banner">
+        <nav aria-label="Main Navigation" class="card"
+            style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo"
+                    style="height:48px" /></div>
+            <ul class="nav-items" role="menubar" aria-label="Primary">
+                <li role="none"><a role="menuitem" class="nav-link" href="../../index.html">Home</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="practice.html">Practice</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="dictionary.html">Dictionary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" class="practice-container">
+        <h1 class="practice-title">Choose a Practice Activity</h1>
+        <div class="practice-menu" role="list">
+            <a class="practice-button" href="flashcards.html" role="listitem">Flashcards</a>
+            <a class="practice-button" href="qa.html" role="listitem">Question &amp; Answer</a>
+            <a class="practice-button" href="mini-quiz.html" role="listitem">Mini Quiz</a>
+            <!-- Future items: pronunciation, listening, final test -->
+        </div>
+        <p style="margin-top:1rem;color:var(--muted);max-width:720px;text-align:center">
+            Accessibility tip: keyboard users can Tab to each practice item and press Enter to open. Screen readers
+            should announce page headings and controls.
+        </p>
+    </main>
+
+    <footer class="site-footer">© 2025 LearnPashtoToday</footer>
+</body>
+
+</html>

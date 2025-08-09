@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--
+    mini-quiz.html
+    Small interactive question example (keeps simple JS inline for demonstration).
+    For more robust quizzes use qa.js with data-driven questions.
+  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mini Quiz — Learn Pashto</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body>
+    <header role="banner" class="banner">
+        <nav aria-label="Main Navigation" class="card"
+            style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Logo" style="height:48px" /></div>
+            <ul class="nav-items">
+                <li role="none"><a role="menuitem" class="nav-link" href="../../index.html">Home</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="practice.html">Practice</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="dictionary.html">Dictionary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" role="main" tabindex="-1">
+        <h1>Mini Quiz</h1>
+        <p>What is the Pashto word for "Thank you"?</p>
+
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            <button type="button" onclick="checkSimpleQuizAnswer(this)">ho</button>
+            <button type="button" onclick="checkSimpleQuizAnswer(this)">manana</button>
+            <button type="button" onclick="checkSimpleQuizAnswer(this)">na</button>
+        </div>
+
+        <p id="quiz-feedback" style="margin-top:.75rem" aria-live="polite"></p>
+    </main>
+
+    <footer class="site-footer">© 2025 LearnPashtoToday</footer>
+
+    <script>
+        // Small inline helper used for this demo page only.
+        // For production, move logic to /scripts/qa.js or utils.js.
+        function checkSimpleQuizAnswer(button) {
+            const correctAnswer = "manana";
+            const feedback = document.getElementById("quiz-feedback");
+            const isCorrect = button.textContent.trim().toLowerCase() === correctAnswer;
+            feedback.textContent = isCorrect ? "✅ Correct!" : "❌ Try again!";
+            feedback.style.color = isCorrect ? "green" : "red";
+        }
+    </script>
+</body>
+
+</html>

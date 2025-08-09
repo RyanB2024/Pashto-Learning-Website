@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--
+    qa.html
+    Question & Answer / Quiz page
+    - Uses scripts/qa.js and utils.js
+    - Switch between multiple choice & written answer
+  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Q&amp;A — Learn Pashto</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body>
+    <header role="banner" class="banner">
+        <nav aria-label="Main Navigation" class="card"
+            style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo"
+                    style="height:48px" /></div>
+            <ul class="nav-items" role="menubar" aria-label="Primary">
+                <li role="none"><a role="menuitem" class="nav-link" href="../../index.html">Home</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="practice.html">Practice</a></li>
+                <li role="none"><a role="menuitem" class="nav-link" href="dictionary.html">Dictionary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" class="container" tabindex="-1">
+        <h1>Test Your Pashto Knowledge</h1>
+
+        <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+            <label for="displayMode">Display mode</label>
+            <select id="displayMode" aria-label="Choose display mode">
+                <option value="pashto">Pashto Script</option>
+                <option value="latin">Latin Script</option>
+                <option value="phonetic">Phonetic</option>
+            </select>
+
+            <label class="switch" style="display:inline-flex;align-items:center">
+                <input type="checkbox" id="answerModeToggle" aria-checked="true" />
+                <span class="slider" aria-hidden="true"></span>
+            </label>
+            <span id="modeLabel">Multiple Choice</span>
+        </div>
+
+        <div class="sub-container" id="quiz-container" style="margin-top:1rem">
+            <p id="question" style="font-size:1.25rem">Loading question…</p>
+
+            <div id="choices-container" aria-live="polite"></div>
+
+            <div style="margin-top:.75rem">
+                <label for="textAnswer" class="visually-hidden">Type answer</label>
+                <input id="textAnswer" type="text" placeholder="Type your answer..."
+                    style="width:100%;max-width:720px" />
+            </div>
+
+            <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
+                <button type="button" onclick="submitAnswer()">Submit Answer</button>
+                <button type="button" onclick="nextQuestion()">Next Question</button>
+            </div>
+
+            <p id="feedback" style="margin-top:.75rem" aria-live="polite"></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">© 2025 LearnPashtoToday</footer>
+
+    <script src="../scripts/utils.js" defer></script>
+    <script src="../scripts/qa.js" defer></script>
+</body>
+
+</html>
