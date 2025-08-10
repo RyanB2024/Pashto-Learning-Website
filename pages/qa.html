@@ -39,11 +39,18 @@
                 <option value="phonetic">Phonetic</option>
             </select>
 
-            <label class="switch" style="display:inline-flex;align-items:center">
-                <input type="checkbox" id="answerModeToggle" aria-checked="true" />
-                <span class="slider" aria-hidden="true"></span>
-            </label>
-            <span id="modeLabel">Multiple Choice</span>
+            <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+                <label for="answerModeToggle">Answer Mode:</label>
+
+                <!-- Slider switch -->
+                <label class="switch">
+                    <input type="checkbox" id="answerModeToggle" checked>
+                    <span class="slider round"></span>
+                </label>
+
+                <span id="modeLabel">Multiple Choice</span>
+            </div>
+
         </div>
 
         <div class="sub-container" id="quiz-container" style="margin-top:1rem">
