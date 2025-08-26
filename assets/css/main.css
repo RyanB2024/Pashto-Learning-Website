@@ -6,7 +6,7 @@
 /* Base */
 :root {
     --brand-1: #1e4e44;
-    --brand-2: #6F9F94;
+    --brand-2: #1e4e44;
     --accent: #2a6c5d;
     --bg: #f3f7f7;
     --card: #ffffff;
@@ -99,16 +99,17 @@ nav {
     align-items: center;
     gap: 1rem;
     margin: 2.5%;
-    padding: 1.5rem;
+    padding: 2em;
     border-radius: 20px;
     background: var(--brand-1);
-    color: #fff
+    color: #fff;
 }
 
 .practice-button {
-    display: inline-block;
     background: #fff;
-    color: var(--brand-1);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
     padding: .9rem 1.25rem;
     border-radius: 10px;
     font-weight: 700

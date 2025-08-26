@@ -346,5 +346,49 @@
             "latin": "Naqsha",
             "phonetic": "naq-sha"
         }
+    ],
+    "Prayers": [
+        {
+            "english": "In the name of God, the Most Gracious, the Most Merciful",
+            "pashto": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+            "latin": "Bismillāhi ar-Raḥmāni ar-Raḥīm",
+            "phonetic": "Biss-mil-lah-hi ar-rah-maa-ni ar-ra-heem"
+        },
+        {
+            "english": "Glory to Allah",
+            "pashto": "سُبْحَانَ ٱللَّهِ",
+            "latin": "Subḥāna Allāh",
+            "phonetic": "Sub-haa-nal-laah"
+        },
+        {
+            "english": "All praise belongs to Allah",
+            "pashto": "ٱلْحَمْدُ لِلَّهِ",
+            "latin": "Al-ḥamdu lillāh",
+            "phonetic": "Al-ham-du-lil-laah"
+        },
+        {
+            "english": "I seek forgiveness from Allah",
+            "pashto": "أَسْتَغْفِرُ ٱللَّهَ",
+            "latin": "Astaghfiru Allāh",
+            "phonetic": "As-tag-fir-ul-laah"
+        },
+        {
+            "english": "Peace be upon you",
+            "pashto": "ٱلسَّلَامُ عَلَيْكُمْ",
+            "latin": "As-salāmu ʿalaykum",
+            "phonetic": "As-sa-laa-mu a-lay-kum"
+        },
+        {
+            "english": "Praise be to Allah",
+            "pashto": "ٱلْحَمْدُ لِلَّهِ",
+            "latin": "Al-ḥamdu lillāh",
+            "phonetic": "Al-ham-du lil-laah"
+        },
+        {
+            "english": "In the name of Allah",
+            "pashto": "بِسْمِ ٱللَّهِ",
+            "latin": "Bismillāh",
+            "phonetic": "Bis-mil-laah"
+        }
     ]
 }
