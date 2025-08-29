@@ -2,12 +2,6 @@
 <html lang="en">
 
 <head>
-    <!--
-    qa.html
-    Question & Answer / Quiz page
-    - Uses scripts/qa.js and utils.js
-    - Switch between multiple choice & written answer
-  -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Q&amp;A — Learn Pashto</title>
@@ -31,6 +25,7 @@
     <main id="main" role="main" class="container" tabindex="-1">
         <h1>Test Your Pashto Knowledge</h1>
 
+        <!-- Mode Toggle Controls -->
         <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
             <label for="displayMode">Display mode</label>
             <select id="displayMode" aria-label="Choose display mode">
@@ -50,25 +45,36 @@
 
                 <span id="modeLabel">Multiple Choice</span>
             </div>
-
         </div>
 
         <div class="sub-container" id="quiz-container" style="margin-top:1rem">
             <p id="question" style="font-size:1.25rem">Loading question…</p>
 
-            <div id="choices-container" aria-live="polite"></div>
-
-            <div style="margin-top:.75rem">
-                <label for="textAnswer" class="visually-hidden">Type answer</label>
-                <input id="textAnswer" type="text" placeholder="Type your answer..."
-                    style="width:100%;max-width:720px" />
+            <!-- Multiple Choice Section -->
+            <div class="side-by-side multiple-choice-mode" id="multipleChoiceSection">
+                <div id="choices-container" aria-live="polite"></div>
             </div>
 
+            <!-- Written Answer Section -->
+            <div style="margin-top: 0.75rem;" id="writtenAnswerSection">
+                <div class="side-by-side">
+                    <label for="textAnswer" class="visually-hidden">Type answer</label>
+                    <input id="textAnswer" type="text" placeholder="Type your answer..." />
+                </div>
+            </div>
+
+            <!-- Shared Image (moved dynamically) -->
+            <div id="sharedImage" class="image-container" style="display:none;">
+                <img src="/assets/images/Emotes/default.png" alt="Emote" height="200">
+            </div>
+
+            <!-- Action Buttons -->
             <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
                 <button type="button" onclick="submitAnswer()">Submit Answer</button>
                 <button type="button" onclick="nextQuestion()">Next Question</button>
             </div>
 
+            <!-- Feedback -->
             <p id="feedback" style="margin-top:.75rem" aria-live="polite"></p>
         </div>
     </main>
@@ -77,6 +83,33 @@
 
     <script src="../scripts/utils.js" defer></script>
     <script src="../scripts/qa.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('answerModeToggle');
+            const modeLabel = document.getElementById('modeLabel');
+            const multipleChoiceSection = document.getElementById('multipleChoiceSection');
+            const writtenAnswerSection = document.querySelector('#writtenAnswerSection .side-by-side');
+            const sharedImage = document.getElementById('sharedImage');
+
+            // Set initial position (Multiple Choice mode by default)
+            moveImageTo(multipleChoiceSection);
+
+            toggle.addEventListener('change', () => {
+                if (toggle.checked) {
+                    modeLabel.textContent = 'Multiple Choice';
+                    moveImageTo(multipleChoiceSection);
+                } else {
+                    modeLabel.textContent = 'Written Answer';
+                    moveImageTo(writtenAnswerSection);
+                }
+            });
+
+            function moveImageTo(target) {
+                sharedImage.style.display = 'block';
+                target.appendChild(sharedImage);
+            }
+        });
+    </script>
 </body>
 
 </html>

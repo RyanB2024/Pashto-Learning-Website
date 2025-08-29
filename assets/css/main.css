@@ -28,7 +28,7 @@ body {
 /* ---- Link Styles ---- */
 a {
     color: var(--brand-3);
-    text-decoration: none
+    text-decoration: none;
 }
 
 /* ---- Banner & Nav ---- */
@@ -50,7 +50,7 @@ nav {
     gap: 1rem;
     margin: 0;
     padding: 0;
-    list-style: none
+    list-style: none;
 }
 
 .nav-link {
@@ -66,7 +66,41 @@ nav {
 .container {
     margin: 1.5rem;
     padding: 1.25rem;
-    background: transparent
+    background: transparent;
+}
+
+.side-by-side {
+    display: flex;
+    align-items: center;
+    /* centers image and input vertically */
+    gap: 1rem;
+    /* space between input and image */
+    flex-wrap: nowrap;
+    /* allows wrapping on small screens */
+}
+
+.side-by-side.multiple-choice-mode {
+    align-items: flex-start;
+    /* top-align the image and choices */
+}
+
+#textAnswer {
+    flex: 1;
+    /* input grows to fill available space */
+    max-width: 450px;
+    /* prevents input from shrinking too small */
+    padding: 0.6rem;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.side-by-side img {
+    max-height: 200px;
+    /* keeps image proportional */
+    width: auto;
+    /* maintain aspect ratio */
+    border-radius: var(--radius);
 }
 
 .card {
@@ -97,13 +131,13 @@ nav {
     padding-right: 6rem;
     padding-left: 6rem;
     border-radius: var(--radius);
-    font-weight: 700
+    font-weight: 700;
 }
 
 /* ---- Flashcards ---- */
 #flashcard {
     margin: 1rem;
-    text-align: center
+    text-align: center;
 }
 
 .flashcard-card {
@@ -113,13 +147,13 @@ nav {
     padding: 5.5rem;
     border-radius: var(--radius);
     cursor: pointer;
-    user-select: none
+    user-select: none;
 }
 
 #card-text {
     text-align: center;
     font-size: 2.5rem;
-    line-height: .8
+    line-height: .8;
 }
 
 .controls {
@@ -127,7 +161,7 @@ nav {
     flex-wrap: wrap;
     gap: .5rem;
     justify-content: center;
-    margin-top: .75rem
+    margin-top: .75rem;
 }
 
 .controls button {
@@ -146,7 +180,7 @@ nav {
 #choices-container {
     display: flex;
     flex-direction: column;
-    gap: .6rem
+    gap: .6rem;
 }
 
 #choices-container button {
