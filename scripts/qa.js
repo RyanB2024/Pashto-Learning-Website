@@ -1,111 +1,120 @@
-/* qa.js
-   Question & Answer / quiz logic.
-   - Supports multiple choice and written-answer modes
-   - Display mode (pashto/latin/phonetic) is selectable
-   - Very small and explicit API so tests can call loadQuestion()
-*/
-const QA = (function (utils) {
-    // Example questions; in production move to data JSON
-    const questions = [
-        {
-            pashto: "څنګه یی؟",
-            latin: "Ta tsenga ye?",
-            phonetic: "tah tsang-uh yay?",
-            correctAnswer: "How are you?",
-            choices: ["Good morning", "How are you?", "Thank you", "Goodbye"]
-        },
-        {
-            pashto: "زما نوم احمد دی.",
-            latin: "Zma num Ahmad dey.",
-            phonetic: "zmaa noom Ahmad day.",
-            correctAnswer: "My name is Ahmad.",
-            choices: ["I am hungry", "My name is Ahmad.", "I live in Kabul", "What is your name?"]
-        }
-    ];
-    let currentIndex = 0;
-    let useMultipleChoice = true;
-    let selectedMC = null;
+// scripts/qa.js
+import { $, $$, setText } from './utils.js';
 
-    function init() {
-        bindUI();
-        loadQuestion();
-    }
+let questions = [];
+let currentIndex = 0;
+let useMultipleChoice = true;
+let selectedMC = null;
 
-    function bindUI() {
-        utils.$('#displayMode').addEventListener('change', loadQuestion);
-        utils.$('#answerModeToggle').addEventListener('change', toggleAnswerMode);
-        utils.$('#textAnswer').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') submitAnswer();
-        });
-        // Buttons
-        utils.$('button[onclick="submitAnswer()"]')?.addEventListener('click', submitAnswer);
-        utils.$('button[onclick="nextQuestion()"]')?.addEventListener('click', nextQuestion);
-    }
+// Load questions from JSON file
+async function loadQuestions() {
+  try {
+    const res = await fetch('../assets/data/question.json'); // ✅ singular
+    questions = await res.json();
+    loadQuestion();
+  } catch (err) {
+    console.error("Failed to load questions:", err);
+    setText($('#question'), "⚠️ Error loading questions.");
+  }
+}
 
-    function loadQuestion() {
-        const q = questions[currentIndex];
-        const displayMode = utils.$('#displayMode').value || 'pashto';
-        utils.setText(utils.$('#question'), q[displayMode]);
-        utils.setText(utils.$('#feedback'), '');
-        utils.$('#textAnswer').value = '';
-        selectedMC = null;
-        const choicesContainer = utils.$('#choices-container');
-        choicesContainer.innerHTML = '';
-        if (useMultipleChoice) {
-            utils.$('#textAnswer').style.display = 'none';
-            q.choices.forEach(c => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'mc-button';
-                btn.textContent = c;
-                btn.addEventListener('click', () => selectMC(btn, c));
-                choicesContainer.appendChild(btn);
-            });
-        } else {
-            utils.$('#textAnswer').style.display = 'block';
-        }
-    }
+function loadQuestion() {
+  if (!questions.length) return;
 
-    function selectMC(btn, choice) {
-        utils.$$('.mc-button').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        selectedMC = choice;
-    }
+  const q = questions[currentIndex];
+  const displayMode = $('#displayMode').value || 'pashto';
 
-    function checkAnswer(input) {
-        const correct = questions[currentIndex].correctAnswer.trim().toLowerCase();
-        const fbEl = utils.$('#feedback');
-        if (input.trim().toLowerCase() === correct) {
-            fbEl.textContent = '✅ Correct!';
-            fbEl.style.color = 'green';
-        } else {
-            fbEl.textContent = `❌ Incorrect. Correct answer: "${questions[currentIndex].correctAnswer}"`;
-            fbEl.style.color = 'red';
-        }
-    }
+  setText($('#question'), q[displayMode]);
+  setText($('#feedback'), '');
+  $('#textAnswer').value = '';
+  selectedMC = null;
 
-    function submitAnswer() {
-        if (useMultipleChoice) {
-            if (!selectedMC) return alert('Please select an answer.');
-            checkAnswer(selectedMC);
-        } else {
-            const userInput = utils.$('#textAnswer').value || '';
-            checkAnswer(userInput);
-        }
-    }
+  // Mascot: question state
+  setMascot('../assets/images/Emotes/learn.png', "Can you answer this?");
 
-    function nextQuestion() {
-        currentIndex = (currentIndex + 1) % questions.length;
-        loadQuestion();
-    }
+  const choicesContainer = $('#choices-container');
+  choicesContainer.innerHTML = '';
+  if (useMultipleChoice) {
+    $('#textAnswer').style.display = 'none';
+    q.choices.forEach(c => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mc-button';
+      btn.textContent = c;
+      btn.addEventListener('click', () => selectMC(btn, c));
+      choicesContainer.appendChild(btn);
+    });
+  } else {
+    $('#textAnswer').style.display = 'block';
+  }
+}
 
-    function toggleAnswerMode() {
-        useMultipleChoice = utils.$('#answerModeToggle').checked;
-        utils.$('#modeLabel').textContent = useMultipleChoice ? 'Multiple Choice' : 'Written Answer';
-        loadQuestion();
-    }
+function selectMC(button, choice) {
+  const buttons = $$('#choices-container button');
+  buttons.forEach(b => b.classList.remove('selected'));
+  button.classList.add('selected');
+  selectedMC = choice;
+}
 
-    return { init, loadQuestion }; // keep minimal public API
-})(Utils);
+function submitAnswer() {
+  if (!questions.length) return;
 
-document.addEventListener('DOMContentLoaded', QA.init);
+  const q = questions[currentIndex];
+  let answer = useMultipleChoice ? selectedMC : $('#textAnswer').value.trim();
+
+  if (!answer) {
+    setText($('#feedback'), "⚠️ Please provide an answer.");
+    return;
+  }
+
+  if (answer.toLowerCase() === q.correctAnswer.toLowerCase()) {
+    setText($('#feedback'), "✅ Correct!");
+    setMascot('../assets/images/Emotes/good.png', "Great job!");
+  } else {
+    setText($('#feedback'), `❌ Incorrect. Correct: ${q.correctAnswer}`);
+    setMascot('../assets/images/Emotes/question.png', "Try again!");
+  }
+}
+
+function nextQuestion() {
+  if (!questions.length) return;
+  currentIndex = (currentIndex + 1) % questions.length;
+  loadQuestion();
+}
+
+function setMascot(imgPath, bubbleText) {
+  const mascotImg = $('#mascotImg');
+  const bubble = $('#speechBubble');
+  if (mascotImg) mascotImg.src = imgPath;
+  if (bubble) {
+    bubble.textContent = bubbleText;
+    bubble.style.display = 'block';
+  }
+}
+
+function bindUI() {
+  $('#displayMode').addEventListener('change', loadQuestion);
+
+  const toggle = $('#answerModeToggle');
+  toggle.addEventListener('change', () => {
+    useMultipleChoice = toggle.checked;
+    loadQuestion();
+  });
+
+  $('#textAnswer').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') submitAnswer();
+  });
+
+  document.querySelector('button[onclick="submitAnswer()"]')
+    ?.addEventListener('click', submitAnswer);
+  document.querySelector('button[onclick="nextQuestion()"]')
+    ?.addEventListener('click', nextQuestion);
+}
+
+export function init() {
+  bindUI();
+  loadQuestions();
+}
+
+// Auto-init
+document.addEventListener('DOMContentLoaded', init);

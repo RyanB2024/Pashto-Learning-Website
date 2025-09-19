@@ -337,6 +337,32 @@ input:checked+.slider:before {
     gap: 0.25rem;
 }
 
+.speech-bubble {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brand-w);
+  border: 2px solid var(--brand-1);
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand-1);
+  white-space: nowrap;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: var(--brand-w) transparent transparent transparent;
+}
+
 /* ---- Responsive ---- */
 @media (max-width:600px) {
     .nav-items {

@@ -12,8 +12,9 @@
     <header role="banner" class="banner">
         <nav aria-label="Main Navigation" class="card"
             style="display:flex;align-items:center;justify-content:space-between;">
-            <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo"
-                    style="height:48px" /></div>
+            <div class="logo">
+                <img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" style="height:48px" />
+            </div>
             <ul class="nav-items" role="menubar" aria-label="Primary">
                 <li role="none"><a role="menuitem" class="nav-link" href="../index.html">Home</a></li>
                 <li role="none"><a role="menuitem" class="nav-link" href="practice.html">Practice</a></li>
@@ -63,9 +64,10 @@
                 </div>
             </div>
 
-            <!-- Shared Image (moved dynamically) -->
-            <div id="sharedImage" class="image-container" style="display:none;">
-                <img src="/assets/images/Emotes/default.png" alt="Emote" height="200">
+            <!-- Mascot + Speech Bubble -->
+            <div id="sharedImage" class="image-container" style="display:none; position:relative;">
+                <div id="speechBubble" class="speech-bubble" style="display:none;">Hello!</div>
+                <img id="mascotImg" src="/assets/images/Emotes/default.png" alt="Emote" height="200">
             </div>
 
             <!-- Action Buttons -->
@@ -82,7 +84,9 @@
     <footer class="site-footer">© 2025 LearnPashtoToday</footer>
 
     <script src="../scripts/utils.js" defer></script>
-    <script src="../scripts/qa.js" defer></script>
+    <!-- Instead of defer -->
+    <script type="module" src="../scripts/qa.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const toggle = document.getElementById('answerModeToggle');

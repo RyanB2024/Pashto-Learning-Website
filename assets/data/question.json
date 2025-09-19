@@ -1,0 +1,72 @@
+[
+  {
+    "pashto": "سلام",
+    "latin": "Salam",
+    "phonetic": "sah-lahm",
+    "correctAnswer": "Hello",
+    "choices": ["Hello", "Goodbye", "Please", "Thank you"]
+  },
+  {
+    "pashto": "څنګه یی؟",
+    "latin": "Ta tsenga ye?",
+    "phonetic": "tah tsang-uh yay?",
+    "correctAnswer": "How are you?",
+    "choices": ["How are you?", "What is your name?", "Good morning", "See you later"]
+  },
+  {
+    "pashto": "زه ښه یم",
+    "latin": "Za kha yam",
+    "phonetic": "zah khah yahm",
+    "correctAnswer": "I am fine",
+    "choices": ["I am fine", "Good night", "Yes", "No"]
+  },
+  {
+    "pashto": "زما نوم احمد دی",
+    "latin": "Zma num Ahmad dey",
+    "phonetic": "zmaa noom Ahmad day",
+    "correctAnswer": "My name is Ahmad",
+    "choices": ["What is your name?", "My name is Ahmad", "Where are you from?", "I am fine"]
+  },
+  {
+    "pashto": "ستړی مه شی",
+    "latin": "Staray ma she",
+    "phonetic": "stuh-rai mah shey",
+    "correctAnswer": "Goodbye",
+    "choices": ["Goodbye", "Good morning", "Hello", "Thank you"]
+  },
+  {
+    "pashto": "سهار مو پخير",
+    "latin": "Sahar mo pakhair",
+    "phonetic": "sah-har moh pa-khair",
+    "correctAnswer": "Good morning",
+    "choices": ["Good morning", "Good evening", "Good night", "See you later"]
+  },
+  {
+    "pashto": "ماښام مو پخير",
+    "latin": "Makhsham mo pakhair",
+    "phonetic": "mahk-shaam moh pa-khair",
+    "correctAnswer": "Good evening",
+    "choices": ["Good evening", "Good morning", "Hello", "Goodbye"]
+  },
+  {
+    "pashto": "مننه",
+    "latin": "Manana",
+    "phonetic": "mah-nah-nah",
+    "correctAnswer": "Thank you",
+    "choices": ["Thank you", "Please", "Excuse me", "Yes"]
+  },
+  {
+    "pashto": "هو",
+    "latin": "Ho",
+    "phonetic": "ho",
+    "correctAnswer": "Yes",
+    "choices": ["Yes", "No", "Maybe", "Please"]
+  },
+  {
+    "pashto": "نه",
+    "latin": "Na",
+    "phonetic": "nah",
+    "correctAnswer": "No",
+    "choices": ["No", "Yes", "Thank you", "Excuse me"]
+  }
+]
