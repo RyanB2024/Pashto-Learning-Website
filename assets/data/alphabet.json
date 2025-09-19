@@ -1,0 +1,219 @@
+{
+  "alphabet": [
+    {
+      "pashto": "ا",
+      "latin": "a / ā",
+      "phonetic": "a (as in father)"
+    },
+    {
+      "pashto": "ب",
+      "latin": "b",
+      "phonetic": "b (as in bat)"
+    },
+    {
+      "pashto": "پ",
+      "latin": "p",
+      "phonetic": "p (as in pen)"
+    },
+    {
+      "pashto": "ت",
+      "latin": "t",
+      "phonetic": "t (as in top)"
+    },
+    {
+      "pashto": "ټ",
+      "latin": "ṭ",
+      "phonetic": "retroflex t"
+    },
+    {
+      "pashto": "ث",
+      "latin": "s",
+      "phonetic": "s (as in see)"
+    },
+    {
+      "pashto": "ج",
+      "latin": "j",
+      "phonetic": "j (as in jam)"
+    },
+    {
+      "pashto": "ځ",
+      "latin": "dz",
+      "phonetic": "ds (as in adze)"
+    },
+    {
+      "pashto": "چ",
+      "latin": "ch",
+      "phonetic": "ch (as in chair)"
+    },
+    {
+      "pashto": "څ",
+      "latin": "ts",
+      "phonetic": "ts (as in cats)"
+    },
+    {
+      "pashto": "ح",
+      "latin": "ḥ",
+      "phonetic": "hard h (Arabic loan)"
+    },
+    {
+      "pashto": "خ",
+      "latin": "kh",
+      "phonetic": "kh (like Bach)"
+    },
+    {
+      "pashto": "د",
+      "latin": "d",
+      "phonetic": "d (as in dog)"
+    },
+    {
+      "pashto": "ډ",
+      "latin": "ḍ",
+      "phonetic": "retroflex d"
+    },
+    {
+      "pashto": "ذ",
+      "latin": "z",
+      "phonetic": "z (loanword, as in zoo)"
+    },
+    {
+      "pashto": "ر",
+      "latin": "r",
+      "phonetic": "rolled r (like Spanish r)"
+    },
+    {
+      "pashto": " ړ",
+      "latin": "ṛ",
+      "phonetic": "retroflex r"
+    },
+    {
+      "pashto": "ز",
+      "latin": "z",
+      "phonetic": "z (as in zebra)"
+    },
+    {
+      "pashto": "ژ",
+      "latin": "zh",
+      "phonetic": "zh (like French je)"
+    },
+    {
+      "pashto": "س",
+      "latin": "s",
+      "phonetic": "s (as in see)"
+    },
+    {
+      "pashto": "ش",
+      "latin": "sh",
+      "phonetic": "sh (as in shoe)"
+    },
+    {
+      "pashto": "ښ",
+      "latin": "x̌ / ṣ̌",
+      "phonetic": "retroflex sh"
+    },
+    {
+      "pashto": "ص",
+      "latin": "ṣ",
+      "phonetic": "emphatic s (loanword)"
+    },
+    {
+      "pashto": "ض",
+      "latin": "ẓ",
+      "phonetic": "emphatic z (loanword)"
+    },
+    {
+      "pashto": "ط",
+      "latin": "ṭ",
+      "phonetic": "emphatic t (loanword)"
+    },
+    {
+      "pashto": "ظ",
+      "latin": "ẓ",
+      "phonetic": "emphatic z (loanword)"
+    },
+    {
+      "pashto": "ع",
+      "latin": "ʿ / ‘",
+      "phonetic": "glottal/‘ayn"
+    },
+    {
+      "pashto": "غ",
+      "latin": "gh",
+      "phonetic": "gh (like French r)"
+    },
+    {
+      "pashto": "ف",
+      "latin": "f",
+      "phonetic": "f (as in fun)"
+    },
+    {
+      "pashto": "ق",
+      "latin": "q",
+      "phonetic": "deep k / uvular k"
+    },
+    {
+      "pashto": "ک",
+      "latin": "k",
+      "phonetic": "k (as in kite)"
+    },
+    {
+      "pashto": "ګ",
+      "latin": "g",
+      "phonetic": "g (as in go)"
+    },
+    {
+      "pashto": "ل",
+      "latin": "l",
+      "phonetic": "l (as in light)"
+    },
+    {
+      "pashto": "ږ",
+      "latin": "ẓ̌",
+      "phonetic": "retroflex zh"
+    },
+    {
+      "pashto": "م",
+      "latin": "m",
+      "phonetic": "m (as in man)"
+    },
+    {
+      "pashto": "ن",
+      "latin": "n",
+      "phonetic": "n (as in net)"
+    },
+    {
+      "pashto": "ڼ",
+      "latin": "ṇ",
+      "phonetic": "retroflex n"
+    },
+    {
+      "pashto": "و",
+      "latin": "w / o / u",
+      "phonetic": "w, long o, long u"
+    },
+    {
+      "pashto": "ه",
+      "latin": "h",
+      "phonetic": "h (as in hat)"
+    },
+    {
+      "pashto": "ۍ",
+      "latin": "ay",
+      "phonetic": "ay (as in say)"
+    },
+    {
+      "pashto": "ي",
+      "latin": "y / i",
+      "phonetic": "y (as in yes), long i (as in machine)"
+    },
+    {
+      "pashto": "ې",
+      "latin": "e",
+      "phonetic": "long e (as in they)"
+    },
+    {
+      "pashto": "ئ",
+      "latin": "’y",
+      "phonetic": "glottal + y"
+    }
+  ]
+}
