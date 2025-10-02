@@ -1,8 +1,9 @@
-/* Consolidated, semantic CSS for LearnPashtoToday - Focus: accessibility, responsive layout, maintainability*/
+/* Consolidated, semantic CSS for LearnPashtoToday */
+/* Focus: accessibility, responsive layout, maintainability */
 
-/* ---- Keeps Constant Variables ---- */
+/* ---- Core Variables ---- */
 :root {
-    /*Brand Colors*/
+    /* Brand Colors */
     --brand-1: #1e4e44;
     --brand-2: #1e4e44;
     --brand-3: #2a6c5d;
@@ -10,13 +11,13 @@
     --brand-b: #2a2a2a;
     --card: #dcdcdc;
     --grey: #888;
-    /*Background Color*/
+    /* Background Color */
     --bg: #f3f7f7;
-    /*Brand Radius*/
+    /* Brand Radius */
     --radius: 12px;
 }
 
-/* ---- Base ---- */
+/* ---- Base Styles ---- */
 html,
 body {
     margin: 0;
@@ -31,7 +32,7 @@ a {
     text-decoration: none;
 }
 
-/* ---- Banner & Nav ---- */
+/* ---- Banner & Navigation ---- */
 .banner {
     background: var(--brand-2);
     padding: 0.75rem;
@@ -39,10 +40,12 @@ a {
 
 nav {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo img {
-    height: 100%;
+    height: 56px;
 }
 
 .nav-items {
@@ -56,60 +59,42 @@ nav {
 .nav-link {
     background: var(--brand-w);
     color: var(--brand-1);
-    /*Increase Button Size (padding)*/
     padding: 1rem;
     border-radius: var(--radius);
     font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-/* ---- Container utility ---- */
+.nav-link:hover {
+    background-color: var(--brand-3);
+    color: var(--brand-w);
+}
+
+/* ---- Utility & Layout ---- */
 .container {
     margin: 1.5rem;
     padding: 1.25rem;
     background: transparent;
 }
 
+.card {
+    background: var(--brand-w);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
 .side-by-side {
     display: flex;
     align-items: center;
-    /* centers image and input vertically */
     gap: 1rem;
-    /* space between input and image */
     flex-wrap: nowrap;
-    /* allows wrapping on small screens */
 }
 
 .side-by-side.multiple-choice-mode {
     align-items: flex-start;
-    /* top-align the image and choices */
 }
 
-#textAnswer {
-    flex: 1;
-    /* input grows to fill available space */
-    max-width: 450px;
-    /* prevents input from shrinking too small */
-    padding: 0.6rem;
-    border-radius: var(--radius);
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
-
-.side-by-side img {
-    max-height: 200px;
-    /* keeps image proportional */
-    width: auto;
-    /* maintain aspect ratio */
-    border-radius: var(--radius);
-}
-
-.card {
-    background: var(--brand-w);
-    border-radius: var(--radius);
-    padding: 1rem;
-}
-
-/* ---- Practice menu ---- */
+/* ---- Practice Menu ---- */
 .practice-container {
     display: flex;
     flex-direction: column;
@@ -124,14 +109,19 @@ nav {
 
 .practice-button {
     background: var(--bg);
+    color: var(--brand-1);
     display: flex;
     justify-content: center;
     margin-bottom: 1em;
-    padding: 2rem;
-    padding-right: 6rem;
-    padding-left: 6rem;
+    padding: 2rem 6rem;
     border-radius: var(--radius);
     font-weight: 700;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.practice-button:hover {
+    background-color: var(--brand-3);
+    color: var(--brand-w);
 }
 
 /* ---- Flashcards ---- */
@@ -148,10 +138,12 @@ nav {
     border-radius: var(--radius);
     cursor: pointer;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #card-text {
-    text-align: center;
     font-size: 2.5rem;
     line-height: .8;
 }
@@ -169,14 +161,15 @@ nav {
     border-radius: var(--radius);
     background: var(--brand-1);
     color: var(--brand-w);
-    cursor: pointer
+    cursor: pointer;
+    border: none;
 }
 
 .controls button[aria-pressed="true"] {
-    outline: 3px solid rgba(255, 255, 255, 0.12)
+    outline: 3px solid rgba(255, 255, 255, 0.12);
 }
 
-/* ---- Quiz/choices ---- */
+/* ---- Quiz & Choices ---- */
 #choices-container {
     display: flex;
     flex-direction: column;
@@ -189,15 +182,31 @@ nav {
     border-radius: 10px;
     border: 2px solid var(--brand-1);
     background: var(--bg);
-    cursor: pointer
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-/* ---- Search ---- */
+#choices-container button:hover {
+    background: var(--brand-3);
+    color: var(--brand-w);
+}
+
+#choices-container button:active,
+#choices-container button.selected {
+    background: var(--brand-1);
+    color: var(--brand-w);
+    outline: none;
+}
+
+/* ---- Form Inputs & Search ---- */
+#textAnswer,
 #searchBar {
     width: 100%;
-    padding: .6rem;
-    border-radius: 8px;
-    border: 1px solid #ccc
+    max-width: 450px;
+    padding: 0.6rem;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
 /* ---- Footer ---- */
@@ -206,10 +215,10 @@ nav {
     text-align: center;
     color: var(--grey);
     font-size: .9rem;
-    margin-top: 2rem
+    margin-top: 2rem;
 }
 
-/* ---- Accessibility helpers ---- */
+/* ---- Accessibility Helpers ---- */
 .visually-hidden {
     position: absolute !important;
     clip: rect(1px, 1px, 1px, 1px);
@@ -217,10 +226,10 @@ nav {
     border: 0;
     height: 1px;
     width: 1px;
-    overflow: hidden
+    overflow: hidden;
 }
 
-/* ---- Slider switch styles ---- */
+/* ---- Slider Switch ---- */
 .switch {
     position: relative;
     display: inline-block;
@@ -281,7 +290,6 @@ input:checked+.slider:before {
     height: 120px;
     cursor: pointer;
     position: relative;
-    /* keeps it anchored */
 }
 
 .alphabet-card-inner {
@@ -291,7 +299,6 @@ input:checked+.slider:before {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    /* ensures front/back stay aligned */
 }
 
 .alphabet-card.flipped .alphabet-card-inner {
@@ -302,12 +309,10 @@ input:checked+.slider:before {
 .alphabet-card-back {
     position: absolute;
     top: 0;
-    /* anchor both sides exactly */
     left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    /* hides reversed side */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -315,7 +320,6 @@ input:checked+.slider:before {
     border-radius: var(--radius);
     padding: 0.5rem;
     box-sizing: border-box;
-    /* prevents padding from resizing */
 }
 
 .alphabet-card-front {
@@ -323,9 +327,8 @@ input:checked+.slider:before {
     color: var(--brand-w);
 }
 
-.alphabet-card-front :hover {
+.alphabet-card-front:hover {
     background: var(--brand-1);
-    color: var(--brand-w);
 }
 
 .alphabet-card-back {
@@ -337,6 +340,7 @@ input:checked+.slider:before {
     gap: 0.25rem;
 }
 
+/* ---- Speech Bubble ---- */
 .speech-bubble {
     position: absolute;
     top: -40px;
@@ -350,6 +354,7 @@ input:checked+.slider:before {
     font-weight: 600;
     color: var(--brand-1);
     white-space: nowrap;
+    z-index: 10;
 }
 
 .speech-bubble::after {
@@ -361,31 +366,6 @@ input:checked+.slider:before {
     border-width: 10px 8px 0 8px;
     border-style: solid;
     border-color: var(--brand-w) transparent transparent transparent;
-}
-
-#choices-container button {
-    width: 260px;
-    padding: .6rem;
-    border-radius: 10px;
-    border: 2px solid var(--brand-1);
-    background: var(--bg);
-    cursor: pointer;
-    /* Add a transition for a smooth effect */
-    transition: background-color 0.2s, color 0.2s;
-}
-
-/* Add this for the hover effect */
-#choices-container button:hover {
-    background: var(--brand-3);
-    color: var(--brand-w);
-}
-
-/* Add this for the click/active effect and for the selected button */
-#choices-container button:active,
-#choices-container button.selected {
-    background: var(--brand-1);
-    color: var(--brand-w);
-    outline: none;
 }
 
 /* ---- Dictionary Styles ---- */
@@ -431,20 +411,19 @@ input:checked+.slider:before {
     font-size: 1.1rem;
 }
 
-/* ---- Fix for Centering Feedback Text ---- */
 #feedback {
     width: 100%;
     text-align: center;
 }
 
-/* ---- Responsive ---- */
-@media (max-width:600px) {
+/* ---- Responsive Design ---- */
+@media (max-width: 600px) {
     .nav-items {
         justify-content: center;
-        width: 100%
+        width: 100%;
     }
 
-    .logo img {
-        display: none
+    .logo {
+        display: none;
     }
 }

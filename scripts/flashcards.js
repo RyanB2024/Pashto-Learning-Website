@@ -1,154 +1,139 @@
-/* flashcards.js
-   Responsible for flashcard UI & behaviour.
-   - Loads JSON data
-   - Handles pack/script selection, flip, next/prev, shuffle
-   - Adds speech synthesis (with graceful fallback)
-*/
+/**
+ * flashcards.js
+ * Manages the UI and behavior of the flashcards learning module.
+ */
 import { $, addKeyboardClick, setText } from './utils.js';
 
-const Flashcards = (function () {
-    // DOM refs (cache for performance)
-    const refs = {
-        packSelect: null,
-        scriptSelect: null,
-        packTitle: null,
-        cardText: null,
-        cardCounter: null,
-        flipBtn: null,
-        nextBtn: null,
-        prevBtn: null,
-        shuffleBtn: null,
-        speakBtn: null,
-        cardContainer: null
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = {
+        packSelect: $('#pack-select'),
+        scriptSelect: $('#script-select'),
+        packTitle: $('#pack-title'),
+        cardText: $('#card-text'),
+        cardCounter: $('#card-counter'),
+        flipBtn: $('.flip-button'),
+        nextBtn: $('.next-button'),
+        prevBtn: $('.prev-button'),
+        shuffleBtn: $('.shuffle-button'),
+        speakBtn: $('.speak-button'),
+        cardContainer: $('.flashcard-card')
     };
 
-    // Internal state
-    let data = {};              // full JSON data
+    let allData = {};
     let currentPack = [];
-    let packName = 'clothing';
-    let currentIndex = 0;
-    let currentScript = 'pashto'; // 'pashto' | 'latin' | 'phonetic'
-    let isShowingEnglish = false;
+    let state = {
+        packName: 'clothing',
+        currentIndex: 0,
+        currentScript: 'pashto',
+        isShowingEnglish: false,
+    };
 
-    // Initialize module
-    async function init() {
-        // DOM
-        refs.packSelect = $('#pack-select');
-        refs.scriptSelect = $('#script-select');
-        refs.packTitle = $('#pack-title');
-        refs.cardText = $('#card-text');
-        refs.cardCounter = $('#card-counter');
-        refs.flipBtn = $('.flip-button');
-        refs.nextBtn = $('.next-button');
-        refs.prevBtn = $('.prev-button');
-        refs.shuffleBtn = $('.shuffle-button');
-        refs.speakBtn = $('.speak-button');
-        refs.cardContainer = $('.flashcard-card');
-
-        // Load saved preferences
-        const savedScript = localStorage.getItem('lp_script');
-        const savedPack = localStorage.getItem('lp_pack');
-        if (savedScript) currentScript = savedScript;
-        if (savedPack) packName = savedPack;
-
-        // Fetch data file
-        try {
-            const resp = await fetch('../assets/data/flashcards.json');
-            if (!resp.ok) throw new Error('Failed to load flashcard data');
-            data = await resp.json();
-        } catch (err) {
-            console.error(err);
-            setText(refs.cardText, 'Error loading cards.');
-            return;
-        }
-
+    async function initialize() {
+        loadPreferences();
+        await fetchData();
         populatePackOptions();
         bindEvents();
+        updateUI();
+    }
 
-        // set selects
-        refs.scriptSelect.value = currentScript;
-        refs.packSelect.value = packName;
-        loadPack(packName);
-        updateCard();
+    function loadPreferences() {
+        state.currentScript = localStorage.getItem('lp_script') || 'pashto';
+        state.packName = localStorage.getItem('lp_pack') || 'clothing';
+    }
+
+    async function fetchData() {
+        try {
+            const response = await fetch('../assets/data/flashcards.json');
+            if (!response.ok) throw new Error('Failed to load flashcard data');
+            allData = await response.json();
+        } catch (error) {
+            console.error(error);
+            setText(elements.cardText, 'Error loading cards.');
+        }
     }
 
     function populatePackOptions() {
-        refs.packSelect.innerHTML = '';
-        Object.keys(data).forEach((k) => {
-            const opt = document.createElement('option');
-            opt.value = k;
-            opt.textContent = k.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase());
-            refs.packSelect.appendChild(opt);
-        });
+        elements.packSelect.innerHTML = Object.keys(allData).map(key =>
+            `<option value="${key}">${key.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase())}</option>`
+        ).join('');
     }
 
     function bindEvents() {
-        refs.scriptSelect.addEventListener('change', (e) => {
-            currentScript = e.target.value;
-            localStorage.setItem('lp_script', currentScript);
-            isShowingEnglish = false;
-            updateCard();
-        });
+        elements.scriptSelect.addEventListener('change', handleScriptChange);
+        elements.packSelect.addEventListener('change', handlePackChange);
+        elements.flipBtn.addEventListener('click', flipCard);
+        elements.cardContainer.addEventListener('click', flipCard);
+        elements.nextBtn.addEventListener('click', nextCard);
+        elements.prevBtn.addEventListener('click', prevCard);
+        elements.shuffleBtn.addEventListener('click', shufflePack);
+        elements.speakBtn.addEventListener('click', speakCard);
 
-        refs.packSelect.addEventListener('change', (e) => {
-            loadPack(e.target.value);
-            localStorage.setItem('lp_pack', packName);
-        });
-
-        refs.flipBtn.addEventListener('click', toggleFlip);
-        refs.nextBtn.addEventListener('click', nextCard);
-        refs.prevBtn.addEventListener('click', prevCard);
-        refs.shuffleBtn.addEventListener('click', shufflePack);
-        refs.speakBtn.addEventListener('click', speakCard);
-        // Keyboard support
-        addKeyboardClick(refs.flipBtn, toggleFlip);
-        addKeyboardClick(refs.nextBtn, nextCard);
-        addKeyboardClick(refs.prevBtn, prevCard);
-
-        // Allow clicking the card to flip
-        refs.cardContainer.addEventListener('click', toggleFlip);
+        addKeyboardClick(elements.flipBtn, flipCard);
+        addKeyboardClick(elements.nextBtn, nextCard);
+        addKeyboardClick(elements.prevBtn, prevCard);
     }
 
-    function loadPack(name) {
-        packName = name;
-        currentPack = data[name] || [];
-        currentIndex = 0;
-        isShowingEnglish = false;
-        updateCard();
+    function updateUI() {
+        elements.scriptSelect.value = state.currentScript;
+        elements.packSelect.value = state.packName;
+        loadPack(state.packName);
     }
 
-    function updateCard() {
+    function loadPack(packName) {
+        state.packName = packName;
+        currentPack = allData[packName] || [];
+        state.currentIndex = 0;
+        state.isShowingEnglish = false;
+        renderCard();
+    }
+
+    function renderCard() {
         if (!currentPack.length) {
-            setText(refs.cardText, 'No cards available.');
-            setText(refs.cardCounter, '');
+            setText(elements.cardText, 'No cards available.');
+            setText(elements.cardCounter, '');
             return;
         }
-        const card = currentPack[currentIndex];
-        const shown = isShowingEnglish ? card.english : (card[currentScript] || card.english);
-        setText(refs.cardText, shown);
-        setText(refs.cardCounter, `Card ${currentIndex + 1} of ${currentPack.length}`);
-        refs.cardContainer.setAttribute('aria-label', `${shown}. ${refs.cardCounter.textContent}`);
-        refs.flipBtn.setAttribute('aria-pressed', isShowingEnglish ? 'true' : 'false');
+
+        const card = currentPack[state.currentIndex];
+        const textToShow = state.isShowingEnglish ? card.english : (card[state.currentScript] || card.english);
+
+        setText(elements.cardText, textToShow);
+        setText(elements.cardCounter, `Card ${state.currentIndex + 1} of ${currentPack.length}`);
+
+        elements.cardContainer.setAttribute('aria-label', `${textToShow}. ${elements.cardCounter.textContent}`);
+        elements.flipBtn.setAttribute('aria-pressed', state.isShowingEnglish);
     }
 
-    function toggleFlip(e) {
+    function handleScriptChange(e) {
+        state.currentScript = e.target.value;
+        localStorage.setItem('lp_script', state.currentScript);
+        state.isShowingEnglish = false;
+        renderCard();
+    }
+
+    function handlePackChange(e) {
+        loadPack(e.target.value);
+        localStorage.setItem('lp_pack', state.packName);
+    }
+
+    function flipCard() {
         if (!currentPack.length) return;
-        isShowingEnglish = !isShowingEnglish;
-        updateCard();
+        state.isShowingEnglish = !state.isShowingEnglish;
+        renderCard();
     }
 
     function nextCard() {
         if (!currentPack.length) return;
-        currentIndex = (currentIndex + 1) % currentPack.length;
-        isShowingEnglish = false;
-        updateCard();
+        state.currentIndex = (state.currentIndex + 1) % currentPack.length;
+        state.isShowingEnglish = false;
+        renderCard();
     }
 
     function prevCard() {
         if (!currentPack.length) return;
-        currentIndex = (currentIndex - 1 + currentPack.length) % currentPack.length;
-        isShowingEnglish = false;
-        updateCard();
+        state.currentIndex = (state.currentIndex - 1 + currentPack.length) % currentPack.length;
+        state.isShowingEnglish = false;
+        renderCard();
     }
 
     function shufflePack() {
@@ -157,27 +142,21 @@ const Flashcards = (function () {
             const j = Math.floor(Math.random() * (i + 1));
             [currentPack[i], currentPack[j]] = [currentPack[j], currentPack[i]];
         }
-        currentIndex = 0;
-        isShowingEnglish = false;
-        updateCard();
+        state.currentIndex = 0;
+        state.isShowingEnglish = false;
+        renderCard();
     }
 
     function speakCard() {
-        if (!currentPack.length) return;
-        const text = isShowingEnglish ? currentPack[currentIndex].english : (currentPack[currentIndex][currentScript] || currentPack[currentIndex].english);
-        if (!('speechSynthesis' in window)) {
-            // Accessible message instead of alert
-            setText(refs.cardText, text + ' (speech not supported by this browser)');
-            return;
-        }
+        if (!currentPack.length || !('speechSynthesis' in window)) return;
+
+        const card = currentPack[state.currentIndex];
+        const text = state.isShowingEnglish ? card.english : (card[state.currentScript] || card.english);
+
         const utterance = new SpeechSynthesisUtterance(text);
         speechSynthesis.cancel();
         speechSynthesis.speak(utterance);
     }
 
-    // Expose init
-    return { init };
-})();
-
-// initialize on DOM ready
-document.addEventListener('DOMContentLoaded', Flashcards.init);
+    initialize();
+});
