@@ -4,16 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Q&amp;A — Learn Pashto</title>
+    <title>Q&A — Learn Pashto</title>
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <script type="module" src="../scripts/qa.js"></script>
 </head>
 
 <body>
     <header role="banner" class="banner">
-        <nav aria-label="Main Navigation" class="card"
-            style="display:flex;align-items:center;justify-content:space-between;">
+        <nav aria-label="Main Navigation" class="main-nav card">
             <div class="logo">
-                <img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" style="height:48px" />
+                <img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" />
             </div>
             <ul class="nav-items" role="menubar" aria-label="Primary">
                 <li role="none"><a role="menuitem" class="nav-link" href="../index.html">Home</a></li>
@@ -24,62 +24,59 @@
     </header>
 
     <main id="main" role="main" class="container" tabindex="-1">
-        <div id="quiz-wrapper">
+        <div id="quiz-wrapper" class="quiz-wrapper">
             <h1>Translate Pashto</h1>
 
-            <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+            <div class="toggle-container">
                 <label for="displayMode">Display mode</label>
                 <select id="displayMode" aria-label="Choose display mode">
                     <option value="pashto">Pashto Script</option>
                     <option value="latin">Latin Script</option>
                     <option value="phonetic">Phonetic</option>
                 </select>
-
-                <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-                    <label for="answerModeToggle">Answer Mode:</label>
-
-                    <label class="switch">
-                        <input type="checkbox" id="answerModeToggle" checked>
-                        <span class="slider round"></span>
-                    </label>
-
-                    <span id="modeLabel">Multiple Choice</span>
-                </div>
+            </div>
+            <div class="toggle-container">
+                <label for="answerModeToggle">Answer Mode:</label>
+                <label class="switch">
+                    <input type="checkbox" id="answerModeToggle" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span id="modeLabel">Multiple Choice</span>
             </div>
 
-            <div class="sub-container" id="quiz-container" style="margin-top:1rem">
-                <p id="question" style="font-size:1.25rem">Loading question…</p>
+            <div class="sub-container card" id="quiz-container">
+                <p id="question">Loading question…</p>
 
-                <div class="side-by-side multiple-choice-mode" id="multipleChoiceSection">
+                <div class="side-by-side" id="multipleChoiceSection">
                     <div id="choices-container" aria-live="polite"></div>
                 </div>
 
-                <div style="margin-top: 0.75rem;" id="writtenAnswerSection">
+                <div id="writtenAnswerSection">
                     <div class="side-by-side">
                         <label for="textAnswer" class="visually-hidden">Type answer</label>
                         <input id="textAnswer" type="text" placeholder="Type your answer..." />
                     </div>
                 </div>
 
-                <div id="sharedImage" class="image-container" style="display:none; position:relative;">
-                    <div id="speechBubble" class="speech-bubble" style="display:none;">Hello!</div>
-                    <img id="mascotImg" src="/assets/images/Emotes/default.png" alt="Emote" height="200">
+                <div class="side-by-side mascot-area">
+                    <div id="speechBubble" class="speech-bubble">Hello!</div>
+                    <img id="mascotImg" src="../assets/images/Emotes/default.png" alt="Emote" class="mascot-image">
                 </div>
 
-                <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
+                <div class="button-group">
                     <button type="button" id="back-button">Back</button>
                     <button type="button" id="submit-button">Submit Answer</button>
                     <button type="button" id="next-button">Next Question</button>
                 </div>
 
-                <p id="feedback" style="margin-top:.75rem" aria-live="polite"></p>
+                <p id="feedback" aria-live="polite"></p>
             </div>
         </div>
 
-        <div id="score-container" class="card" style="display: none; text-align: center;">
+        <div id="score-container" class="card score-container">
             <h2>Quiz Complete!</h2>
-            <p style="font-size: 1.2rem;">Your final score is:</p>
-            <p style="font-size: 2.5rem; font-weight: bold; margin: 1rem 0;">
+            <p class="score-text">Your final score is:</p>
+            <p class="final-score-display">
                 <span id="final-score">0</span> / <span id="total-questions">0</span>
             </p>
             <button type="button" id="restart-button">Restart Quiz</button>
@@ -87,35 +84,6 @@
     </main>
 
     <footer class="site-footer">© 2025 LearnPashtoToday</footer>
-
-    <script type="module" src="../scripts/qa.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggle = document.getElementById('answerModeToggle');
-            const modeLabel = document.getElementById('modeLabel');
-            const multipleChoiceSection = document.getElementById('multipleChoiceSection');
-            const writtenAnswerSection = document.querySelector('#writtenAnswerSection .side-by-side');
-            const sharedImage = document.getElementById('sharedImage');
-
-            moveImageTo(multipleChoiceSection);
-
-            toggle.addEventListener('change', () => {
-                if (toggle.checked) {
-                    modeLabel.textContent = 'Multiple Choice';
-                    moveImageTo(multipleChoiceSection);
-                } else {
-                    modeLabel.textContent = 'Written Answer';
-                    moveImageTo(writtenAnswerSection);
-                }
-            });
-
-            function moveImageTo(target) {
-                sharedImage.style.display = 'block';
-                target.appendChild(sharedImage);
-            }
-        });
-    </script>
 </body>
 
 </html>

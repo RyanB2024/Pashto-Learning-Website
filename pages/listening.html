@@ -11,10 +11,9 @@
 
 <body>
     <header role="banner" class="banner">
-        <nav aria-label="Main Navigation" class="card"
-            style="display:flex;align-items:center;justify-content:space-between;">
+        <nav aria-label="Main Navigation" class="main-nav card">
             <div class="logo">
-                <img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" style="height:48px" />
+                <img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" />
             </div>
             <ul class="nav-items" role="menubar" aria-label="Primary">
                 <li role="none"><a role="menuitem" class="nav-link" href="../index.html">Home</a></li>
@@ -25,46 +24,42 @@
     </header>
 
     <main id="main" role="main" class="card" tabindex="-1">
-        <div id="quiz-wrapper">
-            <h1>Listening Practice</h1>
+        <div id="quiz-wrapper" class="quiz-wrapper">
+            <h1 class="text-center">Listening Practice</h1>
 
-            <div class="toggle-container"
-                style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;">
-                <label for="displayMode">Display mode</label>
-                <select id="displayMode" aria-label="Choose display mode">
-                    <option value="pashto">Pashto Script</option>
-                    <option value="latin">Latin Script</option>
-                    <option value="phonetic">Phonetic</option>
-                </select>
+                <div class="toggle-container">
+                    <label for="displayMode">Display mode</label>
+                    <select id="displayMode" aria-label="Choose display mode">
+                        <option value="pashto">Pashto Script</option>
+                        <option value="latin">Latin Script</option>
+                        <option value="phonetic">Phonetic</option>
+                    </select>
             </div>
 
-            <div class="sub-container card" id="quiz-container"
-                style="display: flex; flex-direction: column; align-items: center;">
-
-                <div id="mascot-area" style="position:relative; text-align: center;">
-                    <div id="speechBubble" class="speech-bubble" style="display:none;"></div>
+            <div class="sub-container card quiz-container" id="quiz-container">
+                <div id="mascot-area" class="mascot-area">
+                    <div id="speechBubble" class="speech-bubble"></div>
                     <img id="mascotImg" src="../assets/images/Emotes/teach.png" alt="Leopard mascot asking a question"
-                        height="200">
+                        class="mascot-image">
                 </div>
 
-                <p style="text-align: center; margin-top: 1rem;">Choose the correct response:</p>
+                <p>Choose the correct response:</p>
+                <div id="choices-container" aria-live="polite"></div>
 
-                <div id="choices-container" aria-live="polite" style="margin-top: 1rem;"></div>
-
-                <div style="margin-top:1.5rem;display:flex;gap:.5rem;flex-wrap:wrap">
+                <div class="button-group">
                     <button type="button" id="back-button">Back</button>
                     <button type="button" id="submit-button">Submit</button>
                     <button type="button" id="next-button">Next</button>
                 </div>
 
-                <p id="feedback" style="margin-top:.75rem;" aria-live="polite"></p>
+                <p id="feedback" aria-live="polite"></p>
             </div>
         </div>
 
-        <div id="score-container" class="card" style="display: none; text-align: center;">
+        <div id="score-container" class="card score-container">
             <h2>Practice Complete!</h2>
-            <p style="font-size: 1.2rem;">Your final score is:</p>
-            <p style="font-size: 2.5rem; font-weight: bold; margin: 1rem 0;">
+            <p class="score-text">Your final score is:</p>
+            <p class="final-score-display">
                 <span id="final-score">0</span> / <span id="total-questions">0</span>
             </p>
             <button type="button" id="restart-button">Restart Practice</button>

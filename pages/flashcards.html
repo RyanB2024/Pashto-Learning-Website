@@ -7,15 +7,12 @@
   <title>Flashcards — Learn Pashto</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <script type="module" src="../scripts/flashcards.js"></script>
-
 </head>
 
 <body>
   <header role="banner" class="banner">
-    <nav aria-label="Main Navigation" class="card"
-      style="display:flex;align-items:center;justify-content:space-between;">
-      <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" style="height:48px" />
-      </div>
+    <nav aria-label="Main Navigation" class="main-nav card">
+      <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" /></div>
       <ul class="nav-items" role="menubar" aria-label="Primary">
         <li role="none"><a role="menuitem" class="nav-link" href="../index.html">Home</a></li>
         <li role="none"><a role="menuitem" class="nav-link" href="practice.html">Practice</a></li>
@@ -25,9 +22,8 @@
   </header>
 
   <main id="main" role="main" class="container" tabindex="-1">
-    <div class="card" aria-labelledby="pack-title"
-      style="display:flex;flex-direction:column;gap:.75rem;align-items:center">
-      <div style="width:100%;max-width:760px;display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center">
+    <div class="card flashcard-ui-container" aria-labelledby="pack-title">
+      <div class="flashcard-controls">
         <label for="pack-select" class="visually-hidden">Choose card pack</label>
         <select id="pack-select" aria-label="Choose card pack"></select>
 
@@ -37,15 +33,13 @@
           <option value="latin">Latin Script</option>
           <option value="phonetic">Phonetic</option>
         </select>
-
-        <button class="shuffle-button" type="button">Shuffle</button>
       </div>
 
       <h2 id="pack-title">Flashcards</h2>
       <p id="card-counter" aria-live="polite">Card 0 of 0</p>
 
-      <div class="card flashcard-card" role="button" tabindex="0" aria-pressed="false"
-        aria-label="Flashcard. Click to flip." style="max-width:520px;margin:auto">
+      <div class="flashcard-card" role="button" tabindex="0" aria-pressed="false"
+        aria-label="Flashcard. Click to flip.">
         <p id="card-text">Loading...</p>
       </div>
 
@@ -54,17 +48,12 @@
         <button type="button" class="flip-button" aria-pressed="false" aria-label="Flip card">Flip</button>
         <button type="button" class="next-button" aria-label="Next card">Next</button>
         <button type="button" class="speak-button" aria-label="Speak card text">🔊 Speak</button>
+        <button type="button" class="shuffle-button" aria-label="Shuffle pack">Shuffle</button>
       </div>
-
-      <p style="font-size:.9rem;color:var(--muted);max-width:760px;text-align:center">
-        Tip: Use the <strong>script</strong> selector to switch between Pashto script, Latin romanization, and an
-        English-friendly phonetic rendering.
-      </p>
     </div>
   </main>
 
   <footer class="site-footer">© 2025 LearnPashtoToday</footer>
-
 </body>
 
 </html>
