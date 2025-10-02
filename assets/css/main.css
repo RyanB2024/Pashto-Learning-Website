@@ -338,29 +338,97 @@ input:checked+.slider:before {
 }
 
 .speech-bubble {
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--brand-w);
-  border: 2px solid var(--brand-1);
-  border-radius: 12px;
-  padding: 6px 12px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--brand-1);
-  white-space: nowrap;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brand-w);
+    border: 2px solid var(--brand-1);
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-1);
+    white-space: nowrap;
 }
 
 .speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 10px 8px 0 8px;
-  border-style: solid;
-  border-color: var(--brand-w) transparent transparent transparent;
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 8px 0 8px;
+    border-style: solid;
+    border-color: var(--brand-w) transparent transparent transparent;
+}
+
+#choices-container button {
+    width: 260px;
+    padding: .6rem;
+    border-radius: 10px;
+    border: 2px solid var(--brand-1);
+    background: var(--bg);
+    cursor: pointer;
+    /* Add a transition for a smooth effect */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Add this for the hover effect */
+#choices-container button:hover {
+    background: var(--brand-3);
+    color: var(--brand-w);
+}
+
+/* Add this for the click/active effect and for the selected button */
+#choices-container button:active,
+#choices-container button.selected {
+    background: var(--brand-1);
+    color: var(--brand-w);
+    outline: none;
+}
+
+/* ---- Dictionary Styles ---- */
+.dictionary-entry {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.dictionary-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.entry-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.entry-term {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--brand-1);
+}
+
+.entry-phonetic {
+    font-style: italic;
+    color: var(--grey);
+}
+
+.entry-details {
+    margin-top: 0.25rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.entry-pashto {
+    font-size: 1.1rem;
 }
 
 /* ---- Responsive ---- */

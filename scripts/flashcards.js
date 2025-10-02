@@ -4,7 +4,9 @@
    - Handles pack/script selection, flip, next/prev, shuffle
    - Adds speech synthesis (with graceful fallback)
 */
-const Flashcards = (function (utils) {
+import { $, addKeyboardClick, setText } from './utils.js';
+
+const Flashcards = (function () {
     // DOM refs (cache for performance)
     const refs = {
         packSelect: null,
@@ -31,17 +33,17 @@ const Flashcards = (function (utils) {
     // Initialize module
     async function init() {
         // DOM
-        refs.packSelect = utils.$('#pack-select');
-        refs.scriptSelect = utils.$('#script-select');
-        refs.packTitle = utils.$('#pack-title');
-        refs.cardText = utils.$('#card-text');
-        refs.cardCounter = utils.$('#card-counter');
-        refs.flipBtn = utils.$('.flip-button');
-        refs.nextBtn = utils.$('.next-button');
-        refs.prevBtn = utils.$('.prev-button');
-        refs.shuffleBtn = utils.$('.shuffle-button');
-        refs.speakBtn = utils.$('.speak-button');
-        refs.cardContainer = utils.$('.card');
+        refs.packSelect = $('#pack-select');
+        refs.scriptSelect = $('#script-select');
+        refs.packTitle = $('#pack-title');
+        refs.cardText = $('#card-text');
+        refs.cardCounter = $('#card-counter');
+        refs.flipBtn = $('.flip-button');
+        refs.nextBtn = $('.next-button');
+        refs.prevBtn = $('.prev-button');
+        refs.shuffleBtn = $('.shuffle-button');
+        refs.speakBtn = $('.speak-button');
+        refs.cardContainer = $('.flashcard-card');
 
         // Load saved preferences
         const savedScript = localStorage.getItem('lp_script');
@@ -56,7 +58,7 @@ const Flashcards = (function (utils) {
             data = await resp.json();
         } catch (err) {
             console.error(err);
-            utils.setText(refs.cardText, 'Error loading cards.');
+            setText(refs.cardText, 'Error loading cards.');
             return;
         }
 
@@ -99,9 +101,9 @@ const Flashcards = (function (utils) {
         refs.shuffleBtn.addEventListener('click', shufflePack);
         refs.speakBtn.addEventListener('click', speakCard);
         // Keyboard support
-        utils.addKeyboardClick(refs.flipBtn, toggleFlip);
-        utils.addKeyboardClick(refs.nextBtn, nextCard);
-        utils.addKeyboardClick(refs.prevBtn, prevCard);
+        addKeyboardClick(refs.flipBtn, toggleFlip);
+        addKeyboardClick(refs.nextBtn, nextCard);
+        addKeyboardClick(refs.prevBtn, prevCard);
 
         // Allow clicking the card to flip
         refs.cardContainer.addEventListener('click', toggleFlip);
@@ -117,14 +119,14 @@ const Flashcards = (function (utils) {
 
     function updateCard() {
         if (!currentPack.length) {
-            utils.setText(refs.cardText, 'No cards available.');
-            utils.setText(refs.cardCounter, '');
+            setText(refs.cardText, 'No cards available.');
+            setText(refs.cardCounter, '');
             return;
         }
         const card = currentPack[currentIndex];
         const shown = isShowingEnglish ? card.english : (card[currentScript] || card.english);
-        utils.setText(refs.cardText, shown);
-        utils.setText(refs.cardCounter, `Card ${currentIndex + 1} of ${currentPack.length}`);
+        setText(refs.cardText, shown);
+        setText(refs.cardCounter, `Card ${currentIndex + 1} of ${currentPack.length}`);
         refs.cardContainer.setAttribute('aria-label', `${shown}. ${refs.cardCounter.textContent}`);
         refs.flipBtn.setAttribute('aria-pressed', isShowingEnglish ? 'true' : 'false');
     }
@@ -165,7 +167,7 @@ const Flashcards = (function (utils) {
         const text = isShowingEnglish ? currentPack[currentIndex].english : (currentPack[currentIndex][currentScript] || currentPack[currentIndex].english);
         if (!('speechSynthesis' in window)) {
             // Accessible message instead of alert
-            utils.setText(refs.cardText, text + ' (speech not supported by this browser)');
+            setText(refs.cardText, text + ' (speech not supported by this browser)');
             return;
         }
         const utterance = new SpeechSynthesisUtterance(text);
@@ -175,7 +177,7 @@ const Flashcards = (function (utils) {
 
     // Expose init
     return { init };
-})(Utils);
+})();
 
 // initialize on DOM ready
 document.addEventListener('DOMContentLoaded', Flashcards.init);

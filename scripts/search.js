@@ -3,13 +3,14 @@
    - Pulls from assets/data/flashcards.json to avoid duplication
    - Accessible: results are announced via aria-live
 */
+import { $ } from './utils.js';
 
-(function (utils) {
-  const input = utils.$('#searchBar');
-  const resultsList = utils.$('#searchResults');
-  const dictionaryContainer = utils.$('#dictionaryList');
+(function () {
+  const input = $('#searchBar');
+  const resultsList = $('#searchResults');
+  const dictionaryContainer = $('#dictionaryList');
   const live = (() => {
-    let el = utils.$('#search-live');
+    let el = $('#search-live');
     if (!el) {
       el = document.createElement('div');
       el.id = 'search-live';
@@ -26,30 +27,53 @@
     try {
       const resp = await fetch('../assets/data/flashcards.json');
       fullData = await resp.json();
-      renderFullDictionary(); // optional: pre-render dictionary
+      renderFullDictionary();
     } catch (err) {
       console.error(err);
+      if (dictionaryContainer) {
+        dictionaryContainer.innerHTML = '<p style="color:red;">Error: Could not load dictionary data.</p>';
+      }
     }
-    input.addEventListener('input', onInput);
+    if (input) {
+      input.addEventListener('input', onInput);
+    }
+  }
+
+  function createDictionaryEntry(item) {
+    const entry = document.createElement('div');
+    entry.className = 'dictionary-entry';
+
+    entry.innerHTML = `
+      <div class="entry-header">
+        <span class="entry-term">${item.english}</span>
+        <span class="entry-phonetic">[${item.phonetic}]</span>
+      </div>
+      <div class="entry-details">
+        <div><strong>Pashto:</strong> <span class="entry-pashto">${item.pashto}</span></div>
+        <div><strong>Latin:</strong> ${item.latin}</div>
+      </div>
+    `;
+    return entry;
   }
 
   function renderFullDictionary() {
-    if (!fullData) return;
+    if (!fullData || !dictionaryContainer) return;
     dictionaryContainer.innerHTML = '';
+    const fullDictTitle = document.createElement('h2');
+    fullDictTitle.id = 'full-dict-title';
+    fullDictTitle.textContent = 'All Packs';
+    dictionaryContainer.appendChild(fullDictTitle);
+
     Object.entries(fullData).forEach(([packName, list]) => {
       const section = document.createElement('section');
       section.className = 'sub-container card';
-      const title = document.createElement('strong');
-      title.textContent = packName[0].toUpperCase() + packName.slice(1) + ':';
+      const title = document.createElement('h3');
+      title.textContent = packName[0].toUpperCase() + packName.slice(1).replace(/([A-Z])/g, ' $1');
       section.appendChild(title);
-      const ul = document.createElement('ul');
-      ul.className = 'double-space';
+
       list.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `English: "${item.english}" | Pashto: "${item.pashto}" | Latin: "${item.latin}" | Phonetic: "${item.phonetic}"`;
-        ul.appendChild(li);
+        section.appendChild(createDictionaryEntry(item));
       });
-      section.appendChild(ul);
       dictionaryContainer.appendChild(section);
     });
   }
@@ -84,11 +108,11 @@
 
     matches.forEach(m => {
       const li = document.createElement('li');
-      li.textContent = `${m.english} — ${m.pashto} (${m.latin}) • ${m.phonetic}`;
+      li.appendChild(createDictionaryEntry(m));
       resultsList.appendChild(li);
     });
     live.textContent = `${matches.length} results found`;
   }
 
   document.addEventListener('DOMContentLoaded', init);
-})(Utils);
+})();

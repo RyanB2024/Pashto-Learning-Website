@@ -24,67 +24,70 @@
     </header>
 
     <main id="main" role="main" class="container" tabindex="-1">
-        <h1>Translate Pashto</h1>
-
-        <!-- Mode Toggle Controls -->
-        <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-            <label for="displayMode">Display mode</label>
-            <select id="displayMode" aria-label="Choose display mode">
-                <option value="pashto">Pashto Script</option>
-                <option value="latin">Latin Script</option>
-                <option value="phonetic">Phonetic</option>
-            </select>
+        <div id="quiz-wrapper">
+            <h1>Translate Pashto</h1>
 
             <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-                <label for="answerModeToggle">Answer Mode:</label>
+                <label for="displayMode">Display mode</label>
+                <select id="displayMode" aria-label="Choose display mode">
+                    <option value="pashto">Pashto Script</option>
+                    <option value="latin">Latin Script</option>
+                    <option value="phonetic">Phonetic</option>
+                </select>
 
-                <!-- Slider switch -->
-                <label class="switch">
-                    <input type="checkbox" id="answerModeToggle" checked>
-                    <span class="slider round"></span>
-                </label>
+                <div class="toggle-container" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+                    <label for="answerModeToggle">Answer Mode:</label>
 
-                <span id="modeLabel">Multiple Choice</span>
-            </div>
-        </div>
+                    <label class="switch">
+                        <input type="checkbox" id="answerModeToggle" checked>
+                        <span class="slider round"></span>
+                    </label>
 
-        <div class="sub-container" id="quiz-container" style="margin-top:1rem">
-            <p id="question" style="font-size:1.25rem">Loading question…</p>
-
-            <!-- Multiple Choice Section -->
-            <div class="side-by-side multiple-choice-mode" id="multipleChoiceSection">
-                <div id="choices-container" aria-live="polite"></div>
-            </div>
-
-            <!-- Written Answer Section -->
-            <div style="margin-top: 0.75rem;" id="writtenAnswerSection">
-                <div class="side-by-side">
-                    <label for="textAnswer" class="visually-hidden">Type answer</label>
-                    <input id="textAnswer" type="text" placeholder="Type your answer..." />
+                    <span id="modeLabel">Multiple Choice</span>
                 </div>
             </div>
 
-            <!-- Mascot + Speech Bubble -->
-            <div id="sharedImage" class="image-container" style="display:none; position:relative;">
-                <div id="speechBubble" class="speech-bubble" style="display:none;">Hello!</div>
-                <img id="mascotImg" src="/assets/images/Emotes/default.png" alt="Emote" height="200">
-            </div>
+            <div class="sub-container" id="quiz-container" style="margin-top:1rem">
+                <p id="question" style="font-size:1.25rem">Loading question…</p>
 
-            <!-- Action Buttons -->
-            <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
-                <button type="button" onclick="submitAnswer()">Submit Answer</button>
-                <button type="button" onclick="nextQuestion()">Next Question</button>
-            </div>
+                <div class="side-by-side multiple-choice-mode" id="multipleChoiceSection">
+                    <div id="choices-container" aria-live="polite"></div>
+                </div>
 
-            <!-- Feedback -->
-            <p id="feedback" style="margin-top:.75rem" aria-live="polite"></p>
+                <div style="margin-top: 0.75rem;" id="writtenAnswerSection">
+                    <div class="side-by-side">
+                        <label for="textAnswer" class="visually-hidden">Type answer</label>
+                        <input id="textAnswer" type="text" placeholder="Type your answer..." />
+                    </div>
+                </div>
+
+                <div id="sharedImage" class="image-container" style="display:none; position:relative;">
+                    <div id="speechBubble" class="speech-bubble" style="display:none;">Hello!</div>
+                    <img id="mascotImg" src="/assets/images/Emotes/default.png" alt="Emote" height="200">
+                </div>
+
+                <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
+                    <button type="button" id="back-button">Back</button>
+                    <button type="button" id="submit-button">Submit Answer</button>
+                    <button type="button" id="next-button">Next Question</button>
+                </div>
+
+                <p id="feedback" style="margin-top:.75rem" aria-live="polite"></p>
+            </div>
+        </div>
+
+        <div id="score-container" class="card" style="display: none; text-align: center;">
+            <h2>Quiz Complete!</h2>
+            <p style="font-size: 1.2rem;">Your final score is:</p>
+            <p style="font-size: 2.5rem; font-weight: bold; margin: 1rem 0;">
+                <span id="final-score">0</span> / <span id="total-questions">0</span>
+            </p>
+            <button type="button" id="restart-button">Restart Quiz</button>
         </div>
     </main>
 
     <footer class="site-footer">© 2025 LearnPashtoToday</footer>
 
-    <script src="../scripts/utils.js" defer></script>
-    <!-- Instead of defer -->
     <script type="module" src="../scripts/qa.js"></script>
 
     <script>
@@ -95,7 +98,6 @@
             const writtenAnswerSection = document.querySelector('#writtenAnswerSection .side-by-side');
             const sharedImage = document.getElementById('sharedImage');
 
-            // Set initial position (Multiple Choice mode by default)
             moveImageTo(multipleChoiceSection);
 
             toggle.addEventListener('change', () => {

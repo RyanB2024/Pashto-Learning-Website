@@ -2,18 +2,11 @@
 <html lang="en">
 
 <head>
-  <!--
-    flashcards.html
-    Flashcards UI page
-    - Uses /assets/data/flashcards.json as single source of content
-    - Interactions handled by scripts/flashcards.js and utils.js
-  -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Flashcards — Learn Pashto</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <script src="../scripts/utils.js" defer></script>
-  <script src="../scripts/flashcards.js" defer></script>
+  <script type="module" src="../scripts/flashcards.js"></script>
 
 </head>
 
@@ -32,7 +25,6 @@
   </header>
 
   <main id="main" role="main" class="container" tabindex="-1">
-    <!-- Pack + Script selectors -->
     <div class="card" aria-labelledby="pack-title"
       style="display:flex;flex-direction:column;gap:.75rem;align-items:center">
       <div style="width:100%;max-width:760px;display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center">
@@ -52,13 +44,11 @@
       <h2 id="pack-title">Flashcards</h2>
       <p id="card-counter" aria-live="polite">Card 0 of 0</p>
 
-      <!-- Flashcard (click, Enter/Space to flip) -->
       <div class="card flashcard-card" role="button" tabindex="0" aria-pressed="false"
         aria-label="Flashcard. Click to flip." style="max-width:520px;margin:auto">
         <p id="card-text">Loading...</p>
       </div>
 
-      <!-- Controls -->
       <div class="controls" role="toolbar" aria-label="Flashcard controls">
         <button type="button" class="prev-button" aria-label="Previous card">Previous</button>
         <button type="button" class="flip-button" aria-pressed="false" aria-label="Flip card">Flip</button>

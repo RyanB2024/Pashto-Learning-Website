@@ -1,55 +1,95 @@
 // scripts/qa.js
 import { $, $$, setText } from './utils.js';
 
+let allQuestions = [];
 let questions = [];
 let currentIndex = 0;
+let score = 0;
+let answeredCurrentQuestion = false;
 let useMultipleChoice = true;
 let selectedMC = null;
 
-// Load questions from JSON file
+// DOM Elements
+const elements = {
+  question: $('#question'),
+  feedback: $('#feedback'),
+  textAnswer: $('#textAnswer'),
+  choicesContainer: $('#choices-container'),
+  displayMode: $('#displayMode'),
+  answerModeToggle: $('#answerModeToggle'),
+  backButton: $('#back-button'),
+  submitButton: $('#submit-button'),
+  nextButton: $('#next-button'),
+  mascotImg: $('#mascotImg'),
+  speechBubble: $('#speechBubble'),
+  quizWrapper: $('#quiz-wrapper'),
+  scoreContainer: $('#score-container'),
+  finalScore: $('#final-score'),
+  totalQuestions: $('#total-questions'),
+  restartButton: $('#restart-button'),
+};
+
 async function loadQuestions() {
   try {
-    const res = await fetch('../assets/data/question.json'); // ✅ singular
-    questions = await res.json();
-    loadQuestion();
+    const res = await fetch('../assets/data/question.json');
+    allQuestions = await res.json();
+    startQuiz();
   } catch (err) {
     console.error("Failed to load questions:", err);
-    setText($('#question'), "⚠️ Error loading questions.");
+    setText(elements.question, "⚠️ Error loading questions.");
   }
 }
 
+function startQuiz() {
+  score = 0;
+  currentIndex = 0;
+  questions = [...allQuestions]; // Create a mutable copy
+  shuffleArray(questions); // Shuffle questions for a new quiz
+  elements.totalQuestions.textContent = questions.length;
+  elements.scoreContainer.style.display = 'none';
+  elements.quizWrapper.style.display = 'block';
+  loadQuestion();
+}
+
 function loadQuestion() {
-  if (!questions.length) return;
+  if (currentIndex >= questions.length) {
+    showFinalScore();
+    return;
+  }
 
+  // Disable back button on the first question
+  elements.backButton.disabled = currentIndex === 0;
+
+  answeredCurrentQuestion = false;
   const q = questions[currentIndex];
-  const displayMode = $('#displayMode').value || 'pashto';
+  const displayMode = elements.displayMode.value || 'pashto';
 
-  setText($('#question'), q[displayMode]);
-  setText($('#feedback'), '');
-  $('#textAnswer').value = '';
+  setText(elements.question, q[displayMode]);
+  setText(elements.feedback, '');
+  elements.textAnswer.value = '';
   selectedMC = null;
+  elements.submitButton.disabled = false;
 
-  // Mascot: question state
   setMascot('../assets/images/Emotes/learn.png', "Can you answer this?");
 
-  const choicesContainer = $('#choices-container');
-  choicesContainer.innerHTML = '';
+  elements.choicesContainer.innerHTML = '';
   if (useMultipleChoice) {
-    $('#textAnswer').style.display = 'none';
+    elements.textAnswer.style.display = 'none';
     q.choices.forEach(c => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'mc-button';
       btn.textContent = c;
       btn.addEventListener('click', () => selectMC(btn, c));
-      choicesContainer.appendChild(btn);
+      elements.choicesContainer.appendChild(btn);
     });
   } else {
-    $('#textAnswer').style.display = 'block';
+    elements.textAnswer.style.display = 'block';
   }
 }
 
 function selectMC(button, choice) {
+  if (answeredCurrentQuestion) return;
   const buttons = $$('#choices-container button');
   buttons.forEach(b => b.classList.remove('selected'));
   button.classList.add('selected');
@@ -57,64 +97,84 @@ function selectMC(button, choice) {
 }
 
 function submitAnswer() {
-  if (!questions.length) return;
+  if (answeredCurrentQuestion) return;
 
   const q = questions[currentIndex];
-  let answer = useMultipleChoice ? selectedMC : $('#textAnswer').value.trim();
+  let answer = useMultipleChoice ? selectedMC : elements.textAnswer.value.trim();
 
   if (!answer) {
-    setText($('#feedback'), "⚠️ Please provide an answer.");
+    setText(elements.feedback, "⚠️ Please provide an answer.");
     return;
   }
 
   if (answer.toLowerCase() === q.correctAnswer.toLowerCase()) {
-    setText($('#feedback'), "✅ Correct!");
+    score++;
+    setText(elements.feedback, "✅ Correct!");
     setMascot('../assets/images/Emotes/good.png', "Great job!");
   } else {
-    setText($('#feedback'), `❌ Incorrect. Correct: ${q.correctAnswer}`);
-    setMascot('../assets/images/Emotes/question.png', "Try again!");
+    setText(elements.feedback, `❌ Incorrect. The correct answer is: ${q.correctAnswer}`);
+    setMascot('../assets/images/Emotes/question.png', "That's not it, try the next one!");
   }
+
+  answeredCurrentQuestion = true;
+  elements.submitButton.disabled = true;
 }
 
 function nextQuestion() {
-  if (!questions.length) return;
-  currentIndex = (currentIndex + 1) % questions.length;
+  currentIndex++;
   loadQuestion();
 }
 
+function prevQuestion() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    loadQuestion();
+  }
+}
+
+function showFinalScore() {
+  setText(elements.finalScore, score);
+  elements.quizWrapper.style.display = 'none';
+  elements.scoreContainer.style.display = 'block';
+  setMascot('../assets/images/Emotes/default.png', "Well done!");
+}
+
 function setMascot(imgPath, bubbleText) {
-  const mascotImg = $('#mascotImg');
-  const bubble = $('#speechBubble');
-  if (mascotImg) mascotImg.src = imgPath;
-  if (bubble) {
-    bubble.textContent = bubbleText;
-    bubble.style.display = 'block';
+  if (elements.mascotImg) elements.mascotImg.src = imgPath;
+  if (elements.speechBubble) {
+    elements.speechBubble.textContent = bubbleText;
+    elements.speechBubble.style.display = 'block';
+  }
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
 function bindUI() {
-  $('#displayMode').addEventListener('change', loadQuestion);
+  elements.displayMode.addEventListener('change', loadQuestion);
 
-  const toggle = $('#answerModeToggle');
-  toggle.addEventListener('change', () => {
-    useMultipleChoice = toggle.checked;
+  elements.answerModeToggle.addEventListener('change', () => {
+    useMultipleChoice = elements.answerModeToggle.checked;
     loadQuestion();
   });
 
-  $('#textAnswer').addEventListener('keydown', (e) => {
+  elements.textAnswer.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') submitAnswer();
   });
 
-  document.querySelector('button[onclick="submitAnswer()"]')
-    ?.addEventListener('click', submitAnswer);
-  document.querySelector('button[onclick="nextQuestion()"]')
-    ?.addEventListener('click', nextQuestion);
+  elements.backButton.addEventListener('click', prevQuestion);
+  elements.submitButton.addEventListener('click', submitAnswer);
+  elements.nextButton.addEventListener('click', nextQuestion);
+  elements.restartButton.addEventListener('click', startQuiz);
 }
 
-export function init() {
+function init() {
   bindUI();
   loadQuestions();
 }
 
-// Auto-init
 document.addEventListener('DOMContentLoaded', init);
