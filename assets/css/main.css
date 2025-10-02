@@ -431,6 +431,12 @@ input:checked+.slider:before {
     font-size: 1.1rem;
 }
 
+/* ---- Fix for Centering Feedback Text ---- */
+#feedback {
+    width: 100%;
+    text-align: center;
+}
+
 /* ---- Responsive ---- */
 @media (max-width:600px) {
     .nav-items {

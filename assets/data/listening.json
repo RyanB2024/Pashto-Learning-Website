@@ -1,0 +1,140 @@
+{
+    "listening": [
+        {
+            "question": {
+                "pashto": "سلام",
+                "latin": "Salam",
+                "phonetic": "sah-lahm"
+            },
+            "choices": [
+                {
+                    "pashto": "وعلیکم السلام",
+                    "latin": "Wa alaikum assalam",
+                    "phonetic": "wah ah-lay-koom ah-sah-lahm"
+                },
+                {
+                    "pashto": "مننه",
+                    "latin": "Manana",
+                    "phonetic": "mah-nah-nah"
+                },
+                {
+                    "pashto": "هو",
+                    "latin": "Ho",
+                    "phonetic": "ho"
+                },
+                {
+                    "pashto": "نه",
+                    "latin": "Na",
+                    "phonetic": "nah"
+                }
+            ],
+            "correctAnswer": {
+                "pashto": "وعلیکم السلام",
+                "latin": "Wa alaikum assalam",
+                "phonetic": "wah ah-lay-koom ah-sah-lahm"
+            }
+        },
+        {
+            "question": {
+                "pashto": "څنګه یی؟",
+                "latin": "Tsenga yi?",
+                "phonetic": "tsen-gah yee?"
+            },
+            "choices": [
+                {
+                    "pashto": "زه ښه یم",
+                    "latin": "Za kha yam",
+                    "phonetic": "zah khah yahm"
+                },
+                {
+                    "pashto": "پامان خدای",
+                    "latin": "Khudai paaman",
+                    "phonetic": "khu-dai paa-man"
+                },
+                {
+                    "pashto": "لطفا",
+                    "latin": "Lutfan",
+                    "phonetic": "lut-fan"
+                },
+                {
+                    "pashto": "ستاسو نوم څه دی؟",
+                    "latin": "Staso num tsa de?",
+                    "phonetic": "stah-so noom t-sah day?"
+                }
+            ],
+            "correctAnswer": {
+                "pashto": "زه ښه یم",
+                "latin": "Za kha yam",
+                "phonetic": "zah khah yahm"
+            }
+        },
+        {
+            "question": {
+                "pashto": "ستاسو نوم څه دی؟",
+                "latin": "Staso num tsa de?",
+                "phonetic": "stah-so noom t-sah day?"
+            },
+            "choices": [
+                {
+                    "pashto": "زما نوم... دی",
+                    "latin": "Zma num... dey",
+                    "phonetic": "zmah noom... day"
+                },
+                {
+                    "pashto": "زه ښه یم",
+                    "latin": "Za kha yam",
+                    "phonetic": "zah khah yahm"
+                },
+                {
+                    "pashto": "مننه",
+                    "latin": "Manana",
+                    "phonetic": "mah-nah-nah"
+                },
+                {
+                    "pashto": "بخښنه غواړم",
+                    "latin": "Bakhana ghwaram",
+                    "phonetic": "bah-khah-nah ghwah-ram"
+                }
+            ],
+            "correctAnswer": {
+                "pashto": "زما نوم... دی",
+                "latin": "Zma num... dey",
+                "phonetic": "zmah noom... day"
+            }
+        },
+        {
+            "question": {
+                "pashto": "مننه",
+                "latin": "Manana",
+                "phonetic": "mah-nah-nah"
+            },
+            "choices": [
+                {
+                    "pashto": "هرکله راشې",
+                    "latin": "Har kala rashe",
+                    "phonetic": "har kah-lah rah-shay"
+                },
+                {
+                    "pashto": "هو",
+                    "latin": "Ho",
+                    "phonetic": "ho"
+                },
+                {
+                    "pashto": "نه",
+                    "latin": "Na",
+                    "phonetic": "nah"
+                },
+                {
+                    "pashto": "بخښنه غواړم",
+                    "latin": "Bakhana ghwaram",
+                    "phonetic": "bah-khah-nah ghwah-ram"
+                }
+            ],
+            "correctAnswer": {
+                "pashto": "هرکله راشې",
+                "latin": "Har kala rashe",
+                "phonetic": "har kah-lah rah-shay"
+            }
+        }
+    ]
+}
