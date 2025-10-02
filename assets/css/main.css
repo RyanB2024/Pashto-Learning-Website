@@ -178,7 +178,7 @@ a {
 }
 
 .flashcard-card {
-    width: 440px;
+    width: 430px;
     border-radius: var(--radius);
     margin: auto;
     cursor: pointer;
@@ -232,7 +232,6 @@ a {
     flex-wrap: wrap;
     margin-bottom: 1rem;
     justify-content: center;
-    /* Centered Toggle */
 }
 
 .quiz-container {
@@ -380,6 +379,11 @@ a {
 }
 
 /* ---- Dictionary Page ---- */
+.dictionary-container {
+    background-color: var(--brand-w);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .dictionary-entry {
     margin-bottom: 1rem;
     padding-bottom: 1rem;

@@ -7,44 +7,38 @@
     <title>Dictionary — Learn Pashto</title>
     <link rel="stylesheet" href="../assets/css/main.css" />
     <script type="module" src="../scripts/search.js"></script>
-
+</head>
 
 <body>
     <header role="banner" class="banner">
-        <nav aria-label="Main Navigation" class="card"
-            style="display:flex;align-items:center;justify-content:space-between;">
-            <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo"
-                    style="height:48px" /></div>
+        <nav aria-label="Main Navigation" class="main-nav card">
+            <div class="logo"><img src="../assets/images/pashto-logo.svg" alt="Learn Pashto Today logo" /></div>
             <ul class="nav-items" role="menubar" aria-label="Primary">
                 <li role="none"><a role="menuitem" class="nav-link" href="../index.html">Home</a></li>
                 <li role="none"><a role="menuitem" class="nav-link" href="practice.html">Practice</a></li>
                 <li role="none"><a role="menuitem" class="nav-link" href="dictionary.html">Dictionary</a></li>
             </ul>
         </nav>
-        <header>
+    </header>
 
-        <main id="main" role="main" class="container" tabindex="-1">
-            <section class="card" aria-labelledby="dict-title">
-                <h1 id="dict-title">Dictionary</h1>
-                <p>Search vocabulary across all packs. Search matches English, Pashto script, Latin, and phonetic
-                    spelling.
-                </p>
+    <main id="main" role="main" class="container" tabindex="-1">
+        <section class="card" aria-labelledby="dict-title">
+            <h1 id="dict-title">Dictionary</h1>
+            <p>Search vocabulary across all packs. Search matches English, Pashto script, Latin, and phonetic spelling.
+            </p>
+            <label for="searchBar" class="visually-hidden">Search vocabulary</label>
+            <input id="searchBar" type="search" placeholder="Search for a word or phrase..."
+                aria-label="Search vocabulary" />
+            <ul id="searchResults" aria-live="polite" style="display:none" role="list"></ul>
+        </section>
 
-                <label for="searchBar" class="visually-hidden">Search vocabulary</label>
-                <input id="searchBar" type="search" placeholder="Search for a word or phrase..."
-                    aria-label="Search vocabulary" />
+        <section id="dictionaryList" class="card dictionary-container" aria-labelledby="full-dict-title">
+            <h2 id="full-dict-title">All Packs</h2>
+            <p class="muted-text">Loading dictionary…</p>
+        </section>
+    </main>
 
-                <ul id="searchResults" aria-live="polite" style="margin-top:1rem;display:none" role="list"></ul>
-            </section>
-
-            <section id="dictionaryList" class="card" aria-labelledby="full-dict-title" style="margin-top:1rem">
-                <h2 id="full-dict-title">All Packs</h2>
-                <p style="color:var(--muted)">Loading dictionary…</p>
-            </section>
-        </main>
-
-        <footer class="site-footer">© 2025 LearnPashtoToday</footer>
-
+    <footer class="site-footer">© 2025 LearnPashtoToday</footer>
 </body>
 
 </html>
