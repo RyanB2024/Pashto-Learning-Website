@@ -178,8 +178,7 @@ a {
 }
 
 .flashcard-card {
-    width: 435px;
-    padding: 1em;
+    width: 440px;
     border-radius: var(--radius);
     margin: auto;
     cursor: pointer;
@@ -189,14 +188,11 @@ a {
     justify-content: center;
     min-height: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Added Shadow */
     transition: box-shadow 0.2s;
-    /* Added transition for hover effect */
 }
 
 .flashcard-card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    /* Slightly larger shadow on hover */
 }
 
 
@@ -221,7 +217,6 @@ a {
     cursor: pointer;
     border: none;
     font-size: 1rem;
-    /* Ensures consistent font size */
 }
 
 /* ---- Quizzes (QA & Listening) ---- */
@@ -236,6 +231,8 @@ a {
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    justify-content: center;
+    /* Centered Toggle */
 }
 
 .quiz-container {
@@ -245,6 +242,7 @@ a {
 }
 
 .mascot-area {
+    margin-top: 1em;
     position: relative;
     text-align: center;
 }
